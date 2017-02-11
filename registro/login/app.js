@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies'])
+        .module('app', ['ngRoute', 'ngCookies','ngAnimate','ui.bootstrap'])
         .config(config)
         .run(run);
 
@@ -11,10 +11,39 @@
         $routeProvider
             .when('/', {
                 controller: 'HomeController',
+                templateUrl: 'home/buscar.view.html',
+                controllerAs: 'vm'
+            })
+             .when('/buscar', {
+                controller: 'HomeController',
                 templateUrl: 'home/index.view.html',
                 controllerAs: 'vm'
             })
-
+            .when('/empresa/registro', {
+                controller: 'EmpresaController',
+                templateUrl: 'empresa/registro.view.html',
+                controllerAs: 'vm'
+            })
+            .when('/empresa/list', {
+                controller: 'EmpresaController',
+                templateUrl: 'empresa/lista.view.html',
+                controllerAs: 'vm'
+            })
+            .when('/postulante/create', {
+                controller: 'PostulanteController',
+                templateUrl: 'postulante/registro.view.html',
+                controllerAs: 'vm'
+            })
+            .when('/listaPostulantes/:id', {
+                controller: 'EmpresaController',
+                templateUrl: 'empresa/listPostulante.view.html',
+                controllerAs: 'vm'
+              })
+            .when('/empresa/registro/anuncio', {
+                controller: 'EmpresaController',
+                templateUrl: 'empresa/registroAnuncio.view.html',
+                controllerAs: 'vm'
+            })
             .when('/login', {
                 controller: 'LoginController',
                 templateUrl: 'login/login.view.html',

@@ -1,0 +1,174 @@
+
+<section class="top-bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<div class="row">
+					<div class="col-xs-6 cuaCandidato">
+						<ul class="social-icons1">
+							<li><a href="index.html" class="textCandidatos">Candidato</a></li>
+						</ul>
+					</div>
+					<div class="col-xs-6 cuaEmpresa">
+						<ul class="social-icons1">
+							<li><a href="#!/empresa/registro" class="textEmpresas">Empresa</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<div class="col-xs-12 cuaResto">
+					<div class="row">
+						<nav class="navbar navbar-inverse navbar-static-top cl-effect-21">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+							<div id="navbar" class="navbar-collapse collapse">
+								<ul class="social-icons1">
+									<li><a href="#" class="textMini">Publica tu aviso</a></li>
+									<li><a href="login.php" class="textMini">{{user.nombres}}</a></li>
+									<li><a href="#!/login" class="btn btn-primary">Logout</a></li>
+									<li><a href="#" class="textSesion">Sube tu curriculum</a></li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div style="height:10px;"></div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-3">
+       <div class="row justify-content-md-center" >
+         <div class="col col-lg-12">
+			      <div class="panel panel-default">
+						  <!-- Default panel contents -->
+					    <div class="panel-heading">Filtros</div>
+						  <div class="panel-body">
+						       <div class="container">
+								  <ul class="list-group">
+								    <li class="animate-repeat" ng-repeat="row in filtros"><button class="btn btn-primary btn-xs" style="width:200px;" ng-click="quitar(row,$index)">{{row.nombre}}</button> </li>
+								  </ul>
+						  </div>
+						  </div>
+				   </div>
+		  </div>
+		</div>
+		<div class="row justify-content-md-center" >
+         <div class="col col-lg-12">
+			      <div class="panel panel-default">
+						  <!-- Default panel contents -->
+					    <div class="panel-heading">Ciudad<input type="search" ng-model="q" placeholder="ciudad..." aria-label="filter depart " /></div>
+						  <div class="panel-body">
+						    <div class="container">
+								  <ul class="list-group">
+								    <li class="animate-repeat" ng-repeat="row in depart | filter:q as results"><button class="btn btn-primary btn-xs"  style="width:200px;"  ng-click="filtrar(row,$index)">{{row.nombre}}</button> </li>
+								    <li class="animate-repeat" ng-if="results.length === 0">
+                                            <strong>No results found...</strong>
+                                      </li>
+								  </ul>
+						  </div>
+				   </div>
+		  </div>
+		</div>
+    </div>
+    
+    </div>
+    <form name="form" ng-submit="vm.registerAnuncio()" role="form">
+     <div class="col col-lg-9">
+       <div class="row justify-content-md-center" >
+         <div class="col col-lg-12">
+            
+	          <div class="panel panel-default">
+				  <!-- Default panel contents -->
+			    <div class="panel-heading">Creae aqui Nuevo Anuncio</div>
+				  <div class="panel-body">
+				       <div class="row justify-content-md-center" >
+                          <div class="col col-lg-4">
+                             <label>Cargo</label>
+                             <div class="form-group">
+                             	 <input type="text" name="cargo" class="form-control" ng-model="anuncio.titulo" placeholder="cargo" required>
+                             </div>
+                          </div>
+                          <div class="col col-lg-4">
+                             <label>Fecha Inicio</label>
+                             <div  class="input-group">
+                                <div class="input-group-addon">
+                                      <i class="fa fa-calendar"></i>
+                                </div>
+                                  <input  type="date" class="form-control"   name="fechaInicio" ng-model="anuncio.fecha_inicio">
+                            </div>
+                          </div>
+                          <div class="col col-lg-4">
+                             <label>Fecha Fin</label>
+                             <div  class="input-group">
+                                <div class="input-group-addon">
+                                      <i class="fa fa-calendar"></i>
+                                </div>
+                                  <input  type="date" class="form-control"   name="fechaFin" ng-model="anuncio.fecha_fin">
+                            </div>
+                          </div>
+                        </div>
+                     
+                        <div class="row justify-content-md-center" >                          
+                          
+                          <div class="col col-lg-12">
+                             <label>Descripcion Corta</label>
+                             <div class="form-group">
+                             	 <textarea class="form-control" ng-model="anuncio.descripcion_corta" rows="1">
+                             	 	
+                             	 </textarea>
+                             </div>
+                          </div>
+                          
+                        </div>
+                        <div class="row justify-content-md-center" >                          
+                          
+                          <div class="col col-lg-12">
+                             <label>Descripcion Completa</label>
+                             <div class="form-group">
+                               <textarea class="form-control" ng-model="anuncio.descripcion" rows="3">
+                                
+                               </textarea>
+                             </div>
+                          </div>
+                          
+                        </div>
+                        <div class="row justify-content-md-center" >                          
+                          <div class="col col-lg-1">
+                             <label>Vacantes:</label>
+                             
+                          </div>
+                          <div class="col col-lg-9">
+                             <div  class="input-group">                                
+                                  <input  type="number" class="form-control"   name="numPuestos" ng-model="anuncio.num_puestos">
+                            </div>
+                          </div>
+                           <div class="col col-lg-2" style="text-align: right;">
+                             <button class="btn btn-info" ng-disabled="form.$invalid || vm.dataLoading" type="submit">Registrar</button>
+                             <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            
+                          </div>
+                          
+                        </div>
+				  </div>
+				</div>
+			
+         </div>
+       </div>
+
+   </div>
+   </form>
+  </div>
+
+ </div>
+ 

@@ -1,0 +1,143 @@
+
+<section class="top-bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<div class="row">
+					<div class="col-xs-6 cuaCandidato">
+						<ul class="social-icons1">
+							<li><a href="index.html" class="textCandidatos">Candidato</a></li>
+						</ul>
+					</div>
+					<div class="col-xs-6 cuaEmpresa">
+						<ul class="social-icons1">
+							<li><a href="#!/empresa/registro" class="textEmpresas">Empresa</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<div class="col-xs-12 cuaResto">
+					<div class="row">
+						<nav class="navbar navbar-inverse navbar-static-top cl-effect-21">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+							<div id="navbar" class="navbar-collapse collapse">
+								<ul class="social-icons1">
+									<li><a href="#" class="textMini">Publica tu aviso</a></li>
+									<li><a href="login.php" class="textMini">{{user.nombres}}</a></li>
+									<li><a href="#!/login" class="btn btn-primary">Logout</a></li>
+									<li><a href="#" class="textSesion">Sube tu curriculum</a></li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div style="height:10px;"></div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-3">
+       <div class="row justify-content-md-center" >
+         <div class="col col-lg-12">
+			      <div class="panel panel-default">
+						  <!-- Default panel contents -->
+					    <div class="panel-heading">Filtros</div>
+						  <div class="panel-body">
+						       <div class="container">
+								  <ul class="list-group">
+								    <li class="animate-repeat" ng-repeat="row in filtros"><button class="btn btn-primary btn-xs" style="width:200px;" ng-click="quitar(row,$index)">{{row.nombre}}</button> </li>
+								  </ul>
+						  </div>
+						  </div>
+				   </div>
+		  </div>
+		</div>
+		<div class="row justify-content-md-center" >
+         <div class="col col-lg-12">
+			      <div class="panel panel-default">
+						  <!-- Default panel contents -->
+					    <div class="panel-heading">Ciudad<input type="search" ng-model="q" placeholder="ciudad..." aria-label="filter depart " /></div>
+						  <div class="panel-body">
+						    <div class="container">
+								  <ul class="list-group">
+								    <li class="animate-repeat" ng-repeat="row in depart | filter:q as results"><button class="btn btn-primary btn-xs"  style="width:200px;"  ng-click="filtrar(row,$index)">{{row.nombre}}</button> </li>
+								    <li class="animate-repeat" ng-if="results.length === 0">
+                                            <strong>No results found...</strong>
+                                      </li>
+								  </ul>
+						  </div>
+				   </div>
+		  </div>
+		</div>
+    </div>
+    
+    </div>
+   
+     <div class="col col-lg-9">
+       <div class="row justify-content-md-center" >
+         <div class="col col-lg-12">
+            
+	          <div class="panel panel-default">
+				  <!-- Default panel contents -->
+			    <div class="panel-heading">Mis Anuncios</div>
+				  <div class="panel-body">
+				       <div class="row justify-content-md-center" >                          
+                          
+                          <div class="col col-lg-12">
+                          <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover ">
+                                <thead>
+                                   <th style="width:30px;"><a href="#!/empresa/registro/anuncio"><i class="glyphicon glyphicon-file"></i></a></th>
+                                   <th>Fecha Incio</th>
+                                   <th>Fecha Fin</th>
+                                   <th>Cargo</th>
+                                   <th>Vacantes</th>
+                                   <th>Estado</th>
+                                   <th style="width:100px;">Ver</th>
+                                </thead>
+                                <tbody>
+                                  <tr ng-repeat="item in anuncios.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.fecha_inicio}}</td>
+                                    <td>{{item.fecha_fin}}</td>
+                                    <td>{{item.titulo}}</td>
+                                    <td>{{item.num_puestos}}</td>
+                                    <td ng-if="item.estado==1"><button class="btn btn-primary btn-xs">Pendiente</button></td>
+                                    <td ng-if="item.estado==0"><button class="btn btn-danger btn-xs">Terminado</button></td>
+                                    <td><a><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                          </div>
+                </div>
+                <div class="row justify-content-md-center" >  
+                  <div class="col col-lg-12" style="text-align: right;">
+                      <div class="box-footer clearfix">  
+                        <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" items-per-page="itemsPerPage"></pagination>
+                    </div>
+                </div>
+              </div>
+				  </div>
+				</div>
+			
+         </div>
+       </div>
+
+   </div>
+   
+  </div>
+
+ </div>
+ 
