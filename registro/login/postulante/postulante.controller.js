@@ -17,9 +17,22 @@
         $scope.empresa={};
         $scope.anuncio={};
         vm.allUsers = [];
+        $scope.depart={};
         vm.deleteUser = deleteUser;
         vm.registerEmpresa=registerEmpresa;
         vm.registerAnuncio=registerAnuncio;
+        $scope.mostraVentanaExperiencia=false;
+        $scope.estudioVentana=false;
+        $scope.programa={};
+        $scope.programas=[];
+        $scope.conocimiento={};
+        $scope.conocimientos=[];
+        $scope.idioma={};
+        $scope.idiomas=[];
+        $scope.estudio={};
+        $scope.estudios=[];
+        $scope.experiencia={};
+        $scope.experiencias=[];
 
         //alert($routeParams.id);
 
@@ -28,9 +41,74 @@
         function initController() {
             loadCurrentUser();
             loadAllUsers();
-            listarAnuncios();
+           // listarAnuncios();
+            departamentos();
         }
-
+        $scope.experieciaActive=function(){
+               $scope.mostraVentanaExperiencia=true;
+        }
+        $scope.experieciaDesactive=function(){
+               $scope.mostraVentanaExperiencia=false;
+        }
+        $scope.estudioActive=function(){
+              $scope.estudioVentana=true;
+        }
+        $scope.estudioDesactive=function(){
+              $scope.estudioVentana=false;
+        }
+        $scope.agregaExperiencia=function(){
+            $scope.experiencias.push($scope.experiencia);
+            $scope.experiencia={};
+            $scope.mostraVentanaExperiencia=false;
+        }
+        $scope.deleteExperiencia=function(index){
+            $scope.experiencias.splice(index,1);
+        }
+        $scope.agregaEstudio=function(){
+             $scope.estudios.push($scope.estudio);
+             $scope.estudio={};
+             $scope.estudioVentana=false;
+        }
+        $scope.deleteEstudio=function(index){
+             $scope.estudios.splice(index,1);
+        }
+        $scope.agregarIdioma=function(){
+            if($scope.idioma.idioma.length > 2 && $scope.idioma.nivel_idioma.length > 2 ){
+              $scope.idiomas.push($scope.idioma); 
+              $scope.idioma={};
+              $scope.idioma.idioma='';
+              $scope.idioma.nivel_idioma='';    
+              }   
+        }
+        $scope.removeIdioma=function(index){
+            $scope.idiomas.splice(index,1);
+        }
+        $scope.addPrograma=function(){
+           //alert()
+            $scope.programas.push($scope.programa);
+            $scope.programa={};
+            $scope.programa.nombre='';
+        }
+        $scope.quitarPrograma=function(index){
+            $scope.programas.splice(index,1);
+        }
+         $scope.addConocimiento=function(){
+           //alert()
+            $scope.conocimientos.push($scope.conocimiento);
+            $scope.conocimiento={};
+            $scope.conocimiento.nombre='';
+        }
+        $scope.quitarConocimiento=function(index){
+            $scope.conocimientos.splice(index,1);
+        }
+        function departamentos(){
+            UserService.departamentos()
+                .then(function (dep) {
+                   $log.log(dep);
+                  //alert("hola"+user.nombres);
+                    $scope.depart = dep;
+                });
+        }
         function loadCurrentUser() {
             UserService.GetByUsername($rootScope.globals.currentUser.username)
                 .then(function (user) {
