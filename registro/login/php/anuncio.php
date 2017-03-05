@@ -17,9 +17,9 @@ switch($action) {
         header('Content-Type: application/json');
         print_r(json_encode(listarAnuncios($fluent)));
         break;
-    case 'departamentos':
+    case 'departamento':
         header('Content-Type: application/json');
-        print_r(json_encode(departamentos($fluent)));
+        print_r(json_encode(departamento($fluent)));
         break;
     case 'profesion':
         header('Content-Type: application/json');
@@ -46,12 +46,12 @@ function listarAnuncios($fluent)
          ->orderBy("id DESC")
          ->fetchAll();
 }
-function departamentos($fluent)
+function departamento($fluent)
 {
     return $fluent
-         ->from('departamentos')
-         ->select('departamentos.*')
-         ->orderBy("id")
+         ->from('departamento')
+         ->select('departamento.*')
+         ->orderBy("dpto_id")
          ->fetchAll();
 }
 function profesion($fluent)

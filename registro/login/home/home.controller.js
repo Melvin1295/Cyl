@@ -23,7 +23,7 @@
             loadCurrentUser();
             loadAllUsers();
             listarAnuncios();
-            departamentos();
+            departamento();
             profesiones();
         }
 
@@ -51,8 +51,8 @@
             $scope.depart.push(row);
             $scope.filtros.splice(index,1);
         }
-        function departamentos(){
-            UserService.departamentos()
+        function departamento(){
+            UserService.departamento()
                 .then(function (dep) {
                    $log.log(dep);
                   //alert("hola"+user.nombres);

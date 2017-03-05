@@ -17,9 +17,21 @@ switch($action) {
         header('Content-Type: application/json');
         print_r(json_encode(listarAnuncios($fluent)));
         break;
-    case 'departamentos':
+    case 'tipo_documento':
         header('Content-Type: application/json');
-        print_r(json_encode(departamentos($fluent)));
+        print_r(json_encode(tipo_documento($fluent)));
+        break;
+    case 'departamento':
+        header('Content-Type: application/json');
+        print_r(json_encode(departamento($fluent)));
+        break;
+    case 'provincia':
+        header('Content-Type: application/json');
+        print_r(json_encode(provincia($fluent)));
+        break;
+    case 'distrito':
+        header('Content-Type: application/json');
+        print_r(json_encode(distrito($fluent)));
         break;
     case 'profesion':
         header('Content-Type: application/json');
@@ -51,12 +63,38 @@ function listarAnuncios($fluent)
          ->orderBy("id DESC")
          ->fetchAll();
 }
-function departamentos($fluent)
+
+function tipo_documento($fluent)
 {
     return $fluent
-         ->from('departamentos')
-         ->select('departamentos.*')
-         ->orderBy("id")
+         ->from('tipo_documento')
+         ->select('tipo_documento.*')
+         ->orderBy("tipo_documento_id")
+         ->fetchAll();
+}
+
+function departamento($fluent)
+{
+    return $fluent
+         ->from('departamento')
+         ->select('departamento.*')
+         ->orderBy("dpto_id")
+         ->fetchAll();
+}
+function provincia($fluent)
+{
+    return $fluent
+         ->from('provincia')
+         ->select('provincia.*')
+         ->orderBy("provincia_id")
+         ->fetchAll();
+}
+function distrito($fluent)
+{
+    return $fluent
+         ->from('distrito')
+         ->select('distrito.*')
+         ->orderBy("distrito_id")
          ->fetchAll();
 }
 function profesion($fluent)

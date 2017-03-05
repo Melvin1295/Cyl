@@ -11,13 +11,19 @@
 
         $scope.user = null;
         $scope.anuncios =[];
+        $scope.tipodoc=[];
         $scope.depart=[];
+        $scope.prov=[];
+        $scope.dist=[];
         $scope.profesiones=[];
         $scope.filtros=[];
         $scope.empresa={};
         $scope.anuncio={};
         vm.allUsers = [];
+        $scope.tipodoc={};
         $scope.depart={};
+        $scope.prov={};
+        $scope.dist={};
         vm.deleteUser = deleteUser;
         vm.registerEmpresa=registerEmpresa;
         vm.registerAnuncio=registerAnuncio;
@@ -42,7 +48,10 @@
             loadCurrentUser();
             loadAllUsers();
            // listarAnuncios();
-            departamentos();
+            tipo_documento();
+            departamento();
+            provincia();
+            distrito();
         }
         $scope.experieciaActive=function(){
                $scope.mostraVentanaExperiencia=true;
@@ -101,12 +110,32 @@
         $scope.quitarConocimiento=function(index){
             $scope.conocimientos.splice(index,1);
         }
-        function departamentos(){
-            UserService.departamentos()
+        function tipo_documento(){
+            UserService.tipo_documento()
+                .then(function (tip) {
+                   $log.log(tip);
+                    $scope.tipodoc = tip;
+                });
+        }
+        function departamento(){
+            UserService.departamento()
                 .then(function (dep) {
                    $log.log(dep);
-                  //alert("hola"+user.nombres);
                     $scope.depart = dep;
+                });
+        }
+        function provincia(){
+            UserService.provincia()
+                .then(function (pro) {
+                   $log.log(pro);
+                    $scope.prov = pro;
+                });
+        }
+        function distrito(){
+            UserService.distrito()
+                .then(function (dis) {
+                   $log.log(dis);
+                    $scope.dist = dis;
                 });
         }
         function loadCurrentUser() {
@@ -177,12 +206,36 @@
             $scope.depart.push(row);
             $scope.filtros.splice(index,1);
         }
-        function departamentos(){
-            UserService.departamentos()
+        function tipo_documento(){
+            UserService.tipo_documento()
+                .then(function (tip) {
+                   $log.log(tip);
+                  //alert("hola"+user.nombres);
+                    $scope.tipodoc = tip;
+                });
+        }
+        function departamento(){
+            UserService.departamento()
                 .then(function (dep) {
                    $log.log(dep);
                   //alert("hola"+user.nombres);
                     $scope.depart = dep;
+                });
+        }
+        function provincia(){
+            UserService.provincia()
+                .then(function (pro) {
+                   $log.log(pro);
+                  //alert("hola"+user.nombres);
+                    $scope.prov = pro;
+                });
+        }
+        function distrito(){
+            UserService.distrito()
+                .then(function (dis) {
+                   $log.log(dis);
+                  //alert("hola"+user.nombres);
+                    $scope.dist = dis;
                 });
         }
         function profesiones(){

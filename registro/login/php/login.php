@@ -12,7 +12,7 @@ $fluent = new FluentPDO($pdo);
 $action = isset($_GET['a']) ? $_GET['a'] : null;
 
 switch($action) {
-    case 'departamentos':
+    case 'departamento':
         header('Content-Type: application/json');
         print_r(json_encode(profesiones($fluent)));
         break;

@@ -47,8 +47,7 @@
 <div style="height:10px;"></div>
 <div class="container">
   <div class="row justify-content-md-center">
-    
-   
+       
      <div class="col col-lg-12">
        
         <div class="panel panel-warning" >
@@ -56,16 +55,34 @@
           <div class="panel-body">
               <div class="row">
                   <div class="col-sm-3" style="text-align:right;">
-                      <label>Tipo de Identificaciòn*:</label>
+                      <label>Nombres*:</label>
                   </div>
-                  <div class="col-sm-4">
-                      <select ng-model="postulante.tipo_documento" class="form-control">
-                            <option value="">Seleccione</option>
-                            <option value="1">DNI</option>
-                            <option value="2">RUC</option>
+                  <div class="col-sm-6">
+                      <input type="text" class="form-control" placeholder="Nombres" ng-model="postulante.nombres" ng-required="true" >
+                  </div>
+              </div><br>
+              <div class="row">
+                  <div class="col-sm-3" style="text-align:right;">
+                      <label>Apellidos*:</label>
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="text" class="form-control" placeholder="Apellido Paterno" ng-model="postulante.apellido_paterno" ng-required="true" maxlength="11">
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="text" class="form-control" placeholder="Apellido Materno" ng-model="postulante.apellido_materno" ng-required="true" maxlength="11">
+                  </div>
+              </div><br>
+              <div class="row">
+                  <div class="col-sm-3" style="text-align:right;">
+                      <label>Tipo de Identificación*:</label>
+                  </div>
+                  <div class="col-sm-3">
+                      <select ng-model="postulante.tipo_documento_id" class="form-control">
+                        <option value="">Seleccione</option>
+                        <option ng-repeat="p in tipodoc" value="{{p.tipo_documento_id}}">{{p.descripcion_corta}}</option>
                       </select>
                   </div>
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                       <input type="text" class="form-control" placeholder="" ng-model="postulante.nro_documento" ng-required="true" maxlength="11">
                   </div>
               </div><br>
@@ -103,8 +120,8 @@
                   <div class="col-sm-3" style="text-align:right;">
                       <label>Estado Civil*:</label>
                   </div>
-                  <div class="col-sm-4">
-                      <select ng-model="postulante.estad_civil" class="form-control">
+                  <div class="col-sm-6">
+                      <select ng-model="postulante.estad_civil_id" class="form-control">
                             <option value="">Estado Civil</option>
                             <option value="1">Soltero</option>
                             <option value="2">Casado</option>
@@ -114,28 +131,46 @@
               </div><br>
               <div class="row">
                   <div class="col-sm-3" style="text-align:right;">
-                      <label>Telfono*:</label>
+                      <label>Teléfono*:</label>
                   </div>
-                  <div class="col-sm-3">
-                      <select ng-model="postulante.tipo_movil" class="form-control">
-                            <option value="">Seleccion</option>
+                  <div class="col-sm-2">
+                      <select ng-model="postulante.tipo_telefono_id" class="form-control">
+                            <option value="">Selección</option>
                             <option value="1">Fijo</option>
                             <option value="2">Movil</option>
                       </select>
                  </div>
                  <div class="col-sm-1">
-                      <input type="text" class="form-control" placeholder="Apellidos" ng-model="postulante.prefijo" ng-required="true" >
-                  </div>
-                  <div class="col-sm-2">
-                      <input type="text" class="form-control" placeholder="Nombres" ng-model="postulante.numero" ng-required="true" maxlength="11">
-                  </div>
+                      <input type="text" class="form-control" ng-model="postulante.cod_telefono" ng-required="true" >
+                 </div>
+                 <div class="col-sm-3">
+                      <input type="text" class="form-control" ng-model="postulante.telefono" ng-required="true" >
+                 </div>
               </div><br>
               <div class="row">
                   <div class="col-sm-3" style="text-align:right;">
-                      <label>Paìs*:</label>
+                      <label>Teléfono 2:</label>
+                  </div>
+                  <div class="col-sm-2">
+                      <select ng-model="postulante.tipo_telefono_id2" class="form-control">
+                            <option value="">Selección</option>
+                            <option value="1">Fijo</option>
+                            <option value="2">Movil</option>
+                      </select>
+                 </div>
+                 <div class="col-sm-1">
+                      <input type="text" class="form-control" ng-model="postulante.cod_telefono2" ng-required="true" >
+                 </div>
+                 <div class="col-sm-3">
+                      <input type="text" class="form-control" ng-model="postulante.telefono2" ng-required="true" >
+                 </div>
+              </div><br>
+              <div class="row">
+                  <div class="col-sm-3" style="text-align:right;">
+                      <label>País*:</label>
                   </div>
                   <div class="col-sm-6">
-                      <select ng-model="postulante.pais" class="form-control">
+                      <select ng-model="postulante.pais_id" class="form-control">
                             <option value="">Sleccione Pais</option>
                             <option value="Peru">Peru</option>
                             <option value="Chile">Chile</option>
@@ -148,12 +183,30 @@
                       <label>Departamento*:</label>
                   </div>
                   <div class="col-sm-6">
-                      <select ng-model="postulante.departamento_id" class="form-control">
-                           <option ng-repeat="p in depart" value="{{p.id}}">{{p.nombre}}</option>
-                            
+                      <select ng-model="postulante.departamento" class="form-control">
+                           <option ng-repeat="p in depart" value="{{p.dpto_id}}">{{p.nombre}}</option>
                       </select>
                  </div>
-                 
+              </div><br>
+              <div class="row">
+                  <div class="col-sm-3" style="text-align:right;">
+                      <label>Provincia*:</label>
+                  </div>
+                  <div class="col-sm-6">
+                      <select ng-model="postulante.provincia_id" class="form-control">
+                           <option ng-repeat="p in prov" value="{{p.provincia_id}}">{{p.nombre}}</option>
+                      </select>
+                 </div>
+              </div><br>
+              <div class="row">
+                  <div class="col-sm-3" style="text-align:right;">
+                      <label>Distrito*:</label>
+                  </div>
+                  <div class="col-sm-6">
+                      <select ng-model="postulante.distrito_id" class="form-control">
+                           <option ng-repeat="p in dist" value="{{p.distrito_id}}">{{p.nombre}}</option>
+                      </select>
+                 </div>
               </div><br>
               <div class="row">
                   <div class="col-sm-3" style="text-align:right;">
@@ -210,8 +263,8 @@
                           <button class="btn btn-info">No Tengo</button>
                       </div>
                    </div>                 
-               </div><br>
-               <div class="row">
+              </div><br>
+              <div class="row">
                   <div class="col-sm-3" style="text-align:right;">
                       <label>Dispone de Vehiculo Propio*:</label>
                   </div>
@@ -221,10 +274,24 @@
                           <button class="btn btn-info">No</button>
                       </div>
                    </div>                 
-               </div><br>
-               <hr>
-                   <h2 style="color:black;">Perfil Profesional</h2>
-                <hr>
+              </div><br>
+              <div class="row">
+                <div class="col-sm-3" style="text-align:right;">
+                  <label>Discapacidad:</label>
+                </div>
+                <div class="col-sm-6">
+                  <input type="checkbox">
+                </div>                 
+              </div><br>
+              <div class="row">
+                <div class="col-sm-3" style="text-align:right;">
+                  <label>Inserta tu foto:</label>
+                </div>
+                  <input id="input-image-1" name="input-image" type="file">          
+              </div><br>
+              <hr>
+                <h2 style="color:black;">Perfil Profesional</h2>
+              <hr>
                 
                <div class="row justify-content-md-center" >                          
                           

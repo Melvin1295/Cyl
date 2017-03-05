@@ -17,7 +17,10 @@
         service.Update = Update;
         service.Delete = Delete;
         service.listarAnuncios=listarAnuncios;
-        service.departamentos=departamentos;
+        service.tipo_documento=tipo_documento;
+        service.departamento=departamento;
+        service.provincia=provincia;
+        service.distrito=distrito;
         service.profesiones=profesiones;
         service.registrarEmpresa=registrarEmpresa;
         service.registrarAnuncio=registrarAnuncio;
@@ -59,11 +62,40 @@
                });
             return deferred.promise;
         }
-        function departamentos() {
+        function tipo_documento() {
             var deferred = $q.defer();
-            
-            
-            $http.get('http://localhost/cyl/registro/login/php/anuncio.php/?a=departamentos' ).then(function(r){
+                        
+            $http.get('http://localhost/cyl/registro/login/php/empresa.php/?a=tipo_documento' ).then(function(r){
+                    
+                  deferred.resolve(r.data);
+                  //$log.log(r.data);
+               });
+            return deferred.promise;
+        }
+        function departamento() {
+            var deferred = $q.defer();
+                        
+            $http.get('http://localhost/cyl/registro/login/php/anuncio.php/?a=departamento' ).then(function(r){
+                    
+                  deferred.resolve(r.data);
+                  //$log.log(r.data);
+               });
+            return deferred.promise;
+        }
+        function provincia() {
+            var deferred = $q.defer();
+                        
+            $http.get('http://localhost/cyl/registro/login/php/empresa.php/?a=provincia' ).then(function(r){
+                    
+                  deferred.resolve(r.data);
+                  //$log.log(r.data);
+               });
+            return deferred.promise;
+        }
+        function distrito() {
+            var deferred = $q.defer();
+                        
+            $http.get('http://localhost/cyl/registro/login/php/empresa.php/?a=distrito' ).then(function(r){
                     
                   deferred.resolve(r.data);
                   //$log.log(r.data);
