@@ -183,7 +183,7 @@
                       <label>Departamento*:</label>
                   </div>
                   <div class="col-sm-6">
-                      <select ng-model="postulante.departamento" class="form-control">
+                      <select ng-model="postulante.departamento_id" class="form-control">
                            <option ng-repeat="p in depart" value="{{p.dpto_id}}">{{p.nombre}}</option>
                       </select>
                  </div>
@@ -298,7 +298,7 @@
                           <div class="col col-lg-12">
                              <label>Cargo o Titulo breve del Curriculum*:</label>
                              <div class="form-group">
-                               <input type="text" class="form-control"  placeholder="Ejm: Analista de sistemas" ng-model="postulante.titulo_curriculo" ng-required="true">
+                               <input type="text" class="form-control"  placeholder="Ejm: Analista de sistemas" ng-model="perfil.cargo" ng-required="true">
                              </div>
                           </div>
                           
@@ -308,7 +308,7 @@
                           <div class="col col-lg-12">
                              <label>Descripcion Breve de tu Perfil Profesional*:</label>
                              <div class="form-group">
-                               <textarea class="form-control" ng-model="postulante.descripcion" rows="3">
+                               <textarea class="form-control" ng-model="perfil.descripcion" rows="3">
                                 
                                </textarea>
                              </div>
@@ -531,9 +531,9 @@
                            <label>Estado*:</label>
                         </div>
                         <div class="col-sm-4">
-                            <input type="radio" name="gender" ng-model="estudio.culminado" value="Culminado"> Culminado
-                            <input type="radio" name="gender" ng-model="estudio.cursando" value="Cursando"> Cursando
-                            <input type="radio" name="gender" ng-model="estudio.abandonado" value="Abandonado"> Abandonado/aplazado
+                            <input type="radio" name="gender" ng-model="estudio.estado" value="Culminado"> Culminado
+                            <input type="radio" name="gender" ng-model="estudio.estado" value="Cursando"> Cursando
+                            <input type="radio" name="gender" ng-model="estudio.estado" value="Abandonado"> Abandonado/aplazado
                        </div>                   
                 </div><br>
                 <div class="row justify-content-md-center">
