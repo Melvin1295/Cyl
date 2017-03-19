@@ -4472,12 +4472,37 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     background-color: transparent;
   }
 }
+
+.navbar-default .navbar-user{
+  color: #777;
+  font-family: Arial;
+  padding-top: 30px;
+  padding-bottom: 18px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.navbar-default .navbar-home{
+  color: white;
+  background-color: #1469AA;
+  font-family: Arial;
+  padding-top: 30px;
+  padding-bottom: 18px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .navbar-default .navbar-link {
   color: #777;
 }
+
 .navbar-default .navbar-link:hover {
-  color: #333;
+  color: white;
+  background-color: #1469AA;
+  padding-top: 30px;
+  padding-bottom: 18px;
 }
+
 .navbar-default .btn-link {
   color: #777;
 }
