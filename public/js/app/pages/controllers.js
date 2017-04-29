@@ -373,9 +373,16 @@
 	            
                 $scope.registerUser=function(){
                     console.log($scope.user);
-                    
+                    crudService.create($scope.user,'userPage').then(function (data){
+                         
+                            alert("registrado Correctamente");
+                            $window.location.href='/auth/login';
+                         
+                      });
                  }
-
+                $scope.registerUserCaselar=function(){
+                    $window.location.href='/auth/login';
+                }
 
 
 

@@ -261,4 +261,5 @@ Route::post('api/postulante/uploadFile',['as'=>'product_disabled', 'uses'=>'Post
 Route::get('api/findPostulante/ver/{id}','PostulanteController@findPostulante');
 
 Route::post('api/curriculum/create',['as'=>'person_create', 'uses'=>'PageController@createCurriculum']);
+Route::post('api/userPage/create',['as'=>'person_create', 'uses'=>'PageController@createUser']);
 Route::post('api/curriculum/uploadFile',['as'=>'product_disabled', 'uses'=>'PageController@uploadFile']);

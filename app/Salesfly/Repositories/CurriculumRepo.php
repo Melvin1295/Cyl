@@ -20,5 +20,12 @@ class CurriculumRepo extends BaseRepo{
         $anio =Curriculum::get();
         return $anio;
     }
+
+    public function paginate2()
+    {
+        $anio =Curriculum::where('id','=',  Auth()->user()->id)
+           ->paginate(15);
+        return $anio;
+    }
     
 } 
