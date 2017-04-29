@@ -5,7 +5,7 @@ class ExperienciaManager extends BaseManager {
     public function getRules()
     {
         $rules = [              
-                     'empresa'=>'',
+                    'empresa'=>'',
                     'departamento_id'=>'',
                     'sector_id'=>'',
                     'cargo'=>'',

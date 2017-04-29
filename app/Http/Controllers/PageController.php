@@ -33,6 +33,13 @@ use Salesfly\Salesfly\Repositories\ProfesionRepo;
 use Salesfly\Salesfly\Managers\ProfesionManager;
 
 
+use Salesfly\Salesfly\Repositories\PostulacionRepo;
+use Salesfly\Salesfly\Managers\PostulacionManager;
+
+use Salesfly\Salesfly\Repositories\CurriculumRepo;
+use Salesfly\Salesfly\Managers\CurriculumManager;
+
+
 class PageController extends Controller {
 
     protected $anioRepo;
@@ -41,7 +48,7 @@ class PageController extends Controller {
     public function __construct(AnioRepo $anioRepo,MesRepo $mesRepo,DiaRepo $diaRepo,AreaRepo $areaRepo,
         DepartamentoRepo $departamentoRepo,DistritoRepo $distritoRepo,ProvinceRepo $provinceRepo,
         ProfesionRepo $profesionRepo,
-        SectorRepo $sectorRepo)
+        SectorRepo $sectorRepo,PostulacionRepo $postulacionRepo,CurriculumRepo $curriculumRepo)
     {
         $this->anioRepo = $anioRepo;
         $this->mesRepo = $mesRepo;
@@ -52,6 +59,8 @@ class PageController extends Controller {
         $this->provinceRepo = $provinceRepo;
         $this->sectorRepo = $sectorRepo;
         $this->profesionRepo = $profesionRepo;
+        $this->postulacionRepo = $postulacionRepo;
+        $this->curriculumRepo = $curriculumRepo;
     }
 
 
@@ -95,12 +104,63 @@ class PageController extends Controller {
         $sector = $this->profesionRepo->profesionAll();
         return response()->json($sector);
     }
-    public function anuncio($object){
-       $departamento = $this->departamentoRepo->anuncios($object);
-        return response()->json($departamento);
+    public function anuncio(Request $request){
+        //var_dump($request->all());die();
+       $departamento = $this->departamentoRepo->anuncios($request->all());       
+       return response()->json($departamento);
+   }
+   public function curriculums(){
+        //var_dump($request->all());die();
+       $curri = $this->curriculumRepo->paginate(15);       
+       return response()->json($curri);
    }
 
 
+   public function findAnuncio($id){
+      $departamento = $this->departamentoRepo->findAnuncio($id);       
+       return response()->json($departamento);
+   }
+   public function allPostulacion ($q){
+      $postulacion = $this->postulacionRepo->allPostulacion($q);       
+       return response()->json($postulacion);
+   }
+   public function create(Request $request)
+    {
+//user = \Auth::user();
+        $object['estado']=1;
+        $object['anuncio_id']=$request->input('idAnun');
+        $object['usuario_id']=1;
+        $object['fecha_postula']=date("Y-m-d");
+        $postulacion = $this->postulacionRepo->getModel();
+        $manager = new PostulacionManager($postulacion,$object);
+        $manager->save();
+
+        return response()->json(['estado'=>true]);
+    }
+     public function createCurriculum(Request $request)
+    {
+//user = \Auth::user();
+        $object['defecto']=1;
+        $object['nombre']=$request->input('nombre');
+        $object['estado']=1;
+        $object['usuario_id']=1;
+        $curriculum = $this->curriculumRepo->getModel();
+        $manager = new CurriculumManager($curriculum,$object);
+        $manager->save();
+
+        return response()->json(['estado'=>true]);
+    }
+     public function uploadFile(){
+        $file = $_FILES["file"]["name"];
+        $time=time();
+        if(!is_dir("images/curriculums/"))
+            mkdir("images/curriculums/", 0777);
+        if($file && move_uploaded_file($_FILES["file"]["tmp_name"], "images/curriculum/".$time."_".$file))
+        {
+             
+        }
+        return "/images/curriculum/".$time."_".$file;      
+    }
     public function index()
     {
         return View('pages.index');
@@ -131,5 +191,12 @@ class PageController extends Controller {
     public function form_ceate(){
         return View('users.form_create');
     }
+    public function form_verAnuncio(){
+        return View('pages.form_verAnuncio');
+   }
+
+   public function form_curriculum(){
+       return View('pages.form_curriculum');
+   }
     
 }

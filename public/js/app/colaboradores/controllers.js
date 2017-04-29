@@ -65,7 +65,9 @@
                 }
                     
                 };
-
+                 $scope.registerUser=function(){
+                    alert("hola");
+                 }
                 $scope.createColaboradores= function(){
                         crudService.create($scope.colaborador, 'colaboradores').then(function (data) {
                            

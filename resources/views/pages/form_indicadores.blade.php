@@ -61,9 +61,12 @@
 <div style="height:10px;"></div>
 <div >
     <div class="row ">
+    
         <div class="col col-lg-3 prueb" >
             <div class="row justify-content-md-center" >
+
                 <div class="col col-lg-11" style="margin-left:4%;">
+            
                     <div class="panel panel-warning">
                         <!-- Default panel contents -->
 
@@ -82,7 +85,7 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-
+                           <label>Buscar</label>
                         </div>
                         <div class="panel-body">
                             <div class="">
@@ -151,10 +154,10 @@
                         <div class="panel panel-info link_depo">
                             <!-- Default panel contents -->
 
-                            <div class="panel-body">
-                                <p><h4 style="color: black;"></h4></p><hr>
-                                <p><span>Av. Chiclayo , SAT SMP</span></p>
-                                <p><label style="color: black;"></label></p>
+                            <div class="panel-body" ng-repeat="row in anuncios">
+                                <p><h4 style="color: black;">@{{row.titulo}}-@{{row.empresa_id}}</h4></p><hr>
+                                <p><span>@{{row.localizacion}}</span></p>
+                                <p><label style="color: black;">@{{row.descripcion_corta}}</label></p>
                                 <p><span>Ayer, 09:45 p.m.</span></p>
                             </div>
                         </div>

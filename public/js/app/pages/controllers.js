@@ -30,7 +30,42 @@
     $scope.filtro={};
     $scope.profesiones=[];
     $scope.postulante={};
-    
+    $scope.anuncios=[];
+    $scope.anuncio={};
+     $scope.postulaciones=[];
+    $scope.estadoPostulacion=10;
+    $scope.curriculum={};
+    $scope.curriculums=[];
+    $scope.user={};
+
+    var id = $routeParams.id;
+
+                if(id)
+                {
+                    crudService.byId(id,'anuncio').then(function (data){
+                        $scope.anuncio = data;
+                       
+                     });
+                }
+    if($location.path() == '/pages/blog') {
+         crudService.search('postulacion',$scope.estadoPostulacion,1).then(function (data){
+                        $scope.postulaciones = data.data;
+                       
+          });
+    }
+    if($location.path() == '/pages/curriculum') {
+         crudService.paginate('curriculums',1).then(function (data){
+                        $scope.curriculums = data.data;
+                       
+          });
+    }
+    $scope.filtroPostulaciones=function(){
+         crudService.search('postulacion',$scope.estadoPostulacion,1).then(function (data){
+                        $scope.postulaciones = data.data;
+                       
+          });
+    }
+
     crudService.all('allProfesion').then(function (data){
                         $scope.profesiones = data;
                        
@@ -60,16 +95,45 @@
      crudService.all('allSector').then(function (data){
                         $scope.sector = data;
      });
-     
+      
 
 
      crudService.ver('findPostulante',18).then(function (data){
                         $scope.postulante= data;
      });
 
+     $scope.subirCurriculum=function(){
+                        var file_archivo = $scope.file_archivo;
+                        if (file_archivo!=undefined) {
+                            crudService.uploadFile('curriculum',file_archivo, name).then(function(data)
+                            {
+                                $scope.curriculum.nombre=data.data;
+                                crudService.create($scope.curriculum,'curriculum').then(function(data)
+                                {
+                                       alert("el archivo subio correctamente!!");
+                                });
+                            });
+                        }else{
+                            alert("errore el archivo al cargar por favor intentelo nuevamente!!!");
+                        }
+     }
+     $scope.buscarAnuncios=function(){
+          crudService.searchAll($scope.filtros,'anuncio').then(function (data){
+                        $scope.anuncios = data.data;
+                     
+           });
+     }
+     $scope.buscarAnuncios();
+     $scope.postularme=function(){
+          crudService.create($scope.anuncio,'postulaciones').then(function (data){
+                      alert("creado Correctamente");
+                     
+           });
+     }
      $scope.palabraClave=function(palabra){
-         
+        $scope.buscarAnuncios();
            $scope.filtro.tipo=1;
+           $scope.filtro.id=0;
            $scope.filtro.value=palabra;
            $scope.filtro.index=0;
            $scope.filtros.push($scope.filtro);
@@ -88,8 +152,10 @@
                 $scope.profesiones[item.index].estado=1;
            }
      }
-     $scope.depratamentoFiltro=function(index,item){         
+     $scope.depratamentoFiltro=function(index,item){   
+           $scope.buscarAnuncios();      
            $scope.filtro.tipo=2;
+           $scope.filtro.id=item.id;
            $scope.filtro.value=item.nombre;
            $scope.filtro.index=index;
            $scope.filtros.push($scope.filtro);
@@ -98,7 +164,9 @@
            $scope.departamento.splice(index,1,item);
      }
      $scope.profesionFiltro=function(index,item){
+           $scope.buscarAnuncios();
            $scope.filtro.tipo=3;
+           $scope.filtro.id=item.id;
            $scope.filtro.value=item.nombre;
            $scope.filtro.index=index;
            $scope.filtros.push($scope.filtro);
@@ -295,15 +363,18 @@
                         programa: $scope.programas,
                         conocimiento: $scope.conocimientos
                     };
-                    console.log($scope.allDatos);
+                   // console.log($scope.allDatos);
                     crudService.create($scope.allDatos,'postulante').then(function (data){
-                         if(data['estado'] ==true){
+                         
                             alert("registrado Correctamente");
-                         }
+                         
                       });
                 }
 	            
-
+                $scope.registerUser=function(){
+                    console.log($scope.user);
+                    
+                 }
 
 
 

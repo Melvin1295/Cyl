@@ -87,7 +87,7 @@ public function findPostulante($id){
     $postulante = $request["postulante"];
     $postulante["apellidos_nombres"] = $postulante["apellido_paterno"] . " " . $postulante["apellido_materno"] . " " . $postulante["nombres"];
     //$postulante["link_foto"] = $_SESSION['nombreArchivo'];
-    var_dump($postulante);
+   // var_dump($postulante);
     /*if ($_SESSION['nombreArchivo'] == null || $_SESSION['nombreArchivo'] == '') {
         $postulante["link_foto"] = "default.jpg";
     } else {
@@ -107,10 +107,10 @@ public function findPostulante($id){
     /*$fluent->insertInto('postulante', $postulante)
             ->execute();*/
     //$idPostulante = getid($fluent);
-            var_dump($postulante1->id);
+         //   var_dump($postulante1->id);
     $perfil["postulante_id"] = $postulante1->id;
     $perfil["estado"] = 1;
-    var_dump($perfil);
+   // var_dump($perfil);
     $perfil1 = $this->perfilRepo->getModel();
     $manager = new PerfilManager($perfil1,$perfil);
     $manager->save();
@@ -120,7 +120,7 @@ public function findPostulante($id){
         $item["perfil_id"] = $perfil1->id;
         $experiencia1 = $this->experienciaRepo->getModel();
         $manager = new ExperienciaManager($experiencia1,$item);
-       
+        $manager->save();
     }
 
     foreach ($estudio as $item) {
@@ -130,7 +130,7 @@ public function findPostulante($id){
         $manager->save();
     }
     foreach ($idioma as $item) {
-        var_dump($item);
+       // var_dump($item);
         $item["perfil_id"] = $perfil1->id;
         $idioma1 = $this->idiomaRepo->getModel();
         $manager = new IdiomaManager($idioma1,$item);
