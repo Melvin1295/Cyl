@@ -28,6 +28,9 @@
                    function Redirect1() {
                     window.location="/pages";
                    }
+                   function logaout() {
+                    window.location="/auth/logout";
+                   }
              </script>
     <!-- ==========================
     	Title 
@@ -182,11 +185,11 @@
                   </li>-->
                   <!-- Menu Footer-->
                   <li class="user-footer">
-                    <div class="pull-left" style="  margin-left: 10px;  margin-bottom: 10px;">
-                      <a href="/users/edit/{{Auth()->user()->id}}" class="btn btn-default btn-flat">Profile</a>
+                    <div class="pull-left" style="    margin-bottom: 10px;">
+                      <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
-                    <div class="pull-right" style="  margin-right: 10px;  margin-bottom: 10px;">
-                      <a href="/auth/logout" class="btn btn-default btn-flat">Salir</a>
+                    <div class="pull-right" style="    margin-left: 85px;  margin-bottom: 10px;">
+                      <a  onclick="logaout()" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>
