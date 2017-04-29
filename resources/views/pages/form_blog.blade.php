@@ -1,3 +1,16 @@
+<section class="content-header">
+          <h1>
+            Colaboradores
+            <small>Panel de Control</small>
+          </h1>
+          <ol class="breadcrumb" style="  height: 40px;">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="/colaboradores"><a href="/colaboradores">Mis Postulaciones</a></li>
+            <li class="active">Crear</li>
+          </ol>
+
+          
+</section>
 <section class="content">
 
 <body>

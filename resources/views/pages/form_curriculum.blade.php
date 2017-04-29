@@ -1,3 +1,16 @@
+<section class="content-header">
+          <h1>
+            Colaboradores
+            <small>Panel de Control</small>
+          </h1>
+          <ol class="breadcrumb" style="  height: 40px;">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="/colaboradores"><a href="/colaboradores">Curriculumn</a></li>
+            <li class="active">Crear</li>
+          </ol>
+
+          
+</section>
 <section class="content">
 <br>
 <style type="text/css">
@@ -23,7 +36,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="item in curriculums">
-        <td width="80px;"><input type="checkbox" class="form-control" selected></td>
+        <td width="80px;"><input type="checkbox" class="form-control" ></td>
         <td width="50%">@{{item.nombre}}</td>
         <td>@{{item.created_at}}</td>
         <td width="40px;"><button class="btn btn-info">Eliminar</button></td>
