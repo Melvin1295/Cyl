@@ -26,5 +26,6 @@ class ConocimientoRepo extends BaseRepo{
                     ->get();
         return $conocimiento;
     }
+
     
 } 

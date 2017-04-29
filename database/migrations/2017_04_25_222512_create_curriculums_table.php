@@ -17,6 +17,7 @@ class CreateCurriculumsTable extends Migration
             $table->integer('defecto');
             $table->String('nombre');
             $table->integer('estado')->default(1);
+            $table->integer('usuario_id');
             $table->timestamps();
         });
     }

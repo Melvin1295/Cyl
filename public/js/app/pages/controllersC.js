@@ -31,7 +31,6 @@
     $scope.profesiones=[];
     $scope.postulante={};
 
-     
     crudService.all('allProfesion').then(function (data){
                         $scope.profesiones = data;
                        
@@ -303,9 +302,24 @@
                          }
                       });
                 }
+                $scope.banderaRegistro = true;
+
                 crudService.all('traerpostulante').then(function (data){
-                    $scope.postulante = data;  
+                    $scope.postulante = data;
+                    console.log($scope.postulante);
+
+                    if ( $scope.postulante.flag_discapacidad === "1") {
+                        $scope.postulante.flag_discapacidad = true;
+                    }else{
+                        $scope.postulante.flag_discapacidad = false;
+                    }
+                    if ( $scope.postulante.flag_vehiculo_propio === "1") {
+                        $scope.postulante.flag_vehiculo_propio = true;
+                    }else{
+                        $scope.postulante.flag_vehiculo_propio = false;
+                    }
                     if($scope.postulante!=undefined){
+                        $scope.banderaRegistro = false;
                         crudService.ver('perfilpostulante',$scope.postulante.id).then(function (data){
                             $scope.perfil= data;
                             crudService.ver('experienciapostulante',$scope.perfil.id).then(function (data){
@@ -336,6 +350,64 @@
 
                                          
                 });  
+                $scope.uploadEditFile = function()
+                { 
+
+                   // if ($scope.editorialCreateForm.$valid) {
+                       // $scope.bandera = true;
+                        var file_archivo = $scope.file_archivo;
+                        if (file_archivo!=undefined) {
+                            crudService.uploadFile('postulante',file_archivo, name).then(function(data)
+                            {
+                                $scope.postulante.link_foto=data.data;
+                                $scope.updatePostulante();
+                            });
+                        }else{
+                            $scope.postulante.link_foto="";
+                            $scope.updatePostulante();
+                        }
+                   // }                       
+                }
+
+                $scope.updatePostulante= function(){
+                    //$scope.allDatos = $scope.postulante;
+                    if ( $scope.postulante.flag_discapacidad) {
+                        $scope.postulante.flag_discapacidad = "1";
+                    }else{
+                        $scope.postulante.flag_discapacidad = "0";
+                    }
+                    if ( $scope.postulante.flag_vehiculo_propio) {
+                        $scope.postulante.flag_vehiculo_propio = "1";
+                    }else{
+                        $scope.postulante.flag_vehiculo_propio = "0"
+                    }
+                     $scope.postulante.perfil = $scope.perfil;
+                     $scope.postulante.experiencia =$scope.experiencias ;
+                     $scope.postulante.estudio = $scope.estudios;
+                     $scope.postulante.idioma = $scope.idiomas;
+                     $scope.postulante.programa=$scope.programas;
+                     $scope.postulante.conocimiento = $scope.conocimientos;
+                    /*$scope.allDatos = {
+                        postulante: $scope.postulante,
+                        perfil: $scope.perfil,
+                        experiencia: $scope.experiencias,
+                        estudio: $scope.estudios,
+                        idioma: $scope.idiomas,
+                        programa: $scope.programas,
+                        conocimiento: $scope.conocimientos
+                    };*/
+                    console.log($scope.postulante);
+                        crudService.update($scope.postulante,'postulante').then(function(data)
+                        {
+                            if(data['estado'] == true){
+                                $scope.success = data['nombres'];
+                                alert('Editado correctamente');
+                               $location.path('/pages');
+                            }else{
+                                $scope.errors =data;
+                            }
+                        });
+                };
 
 	            
 

@@ -38,6 +38,15 @@
 
                 return deferred.promise;
             }
+             function searchAll(area,uri)
+            {
+                 var deferred = $q.defer();
+                $http.get('/api/'+uri+'/search', area).success(function (data) {
+                    deferred.resolve(data);
+                });
+
+                return deferred.promise;
+            }
              function reportCod(uri,cant)
             {
                 var deferred = $q.defer();
@@ -80,7 +89,7 @@
                 );
                 return deferred.promise;
             }
-
+            
             function destroy(area,uri)
             {
                 var deferred = $q.defer();
@@ -286,6 +295,7 @@
                 Cuentas:Cuentas,
                 byId:byId,
                 ver: ver,
+                searchAll: searchAll,
                 validar:validar,
                 update:update,
                 reporteRangFechas: reporteRangFechas,

@@ -22,7 +22,7 @@
 
             .when('/pages/editoriales', {
                     templateUrl: '/pages/form-editorials',
-                    controller: 'CurriculoController'
+                    controller: 'PageController'
                 })
              .when('/pages/publisherItem/:id', {
                     templateUrl: '/pages/form-publisherItem',
@@ -32,8 +32,15 @@
                     templateUrl: '/pages/form-verEditorial',
                     controller: 'PageController'
                 })
+              .when('/pages/verAnuncio/:id', {
+                    templateUrl: '/pages/form-verAnuncio',
+                    controller: 'PageController'
+                })
 
-
+             .when('/pages/curriculum', {
+                    templateUrl: '/pages/form-curriculum',
+                    controller: 'PageController'
+                })
             .when('/pages/indicadores', {
                     templateUrl: '/pages/form-indicadores',
                     controller: 'PageController'
@@ -47,6 +54,7 @@
                     templateUrl: '/users/form-create',
                     controller: 'UserController'
                 })
+            
                  
           
                 //----------------------------------------------------------------------
@@ -189,7 +197,7 @@
                 })
                 .when('/colaboradores/create',{
                     templateUrl:'/colaboradores/form-create',
-                    controller: 'ColaboradorController'
+                    controller: 'PageController'
                 })
                 .when('/colaboradores/edit/:id',{
                     templateUrl:'/colaboradores/form-edit',

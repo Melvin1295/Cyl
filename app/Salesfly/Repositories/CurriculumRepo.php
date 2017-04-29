@@ -1,42 +1,24 @@
 <?php
-namespace Salesfly\Salesfly\Managers;
-class PostulanteManager extends BaseManager {
+namespace Salesfly\Salesfly\Repositories;
+use Salesfly\Salesfly\Entities\Curriculum;
 
-    public function getRules()
+class CurriculumRepo extends BaseRepo{
+    
+    public function getModel()
     {
-        $rules = [ 
-            'tipo_documento_id'=>'',
-            'nro_documento'=>'',
-            'dia'=>'',
-            'mes'=>'',
-            'anio'=>'',
-            'fecha_nacimiento'=>'',
-            'estado_civil_id'=>'',
-            'tipo_telefono_id'=>'',
-            'cod_telefono'=>'',
-            'telefono'=>'',
-            'tipo_telefono_id2'=>'',
-            'cod_telefono2'=>'',
-            'telefono2'=>'',
-            'nombres'=>'',
-            'apellido_paterno'=>'',
-            'apellido_materno'=>'',
-            'apellidos_nombres'=>'',
-            'pais_id'=>'',
-            'departamento_id'=>'',
-            'provincia_id'=>'',
-            'distrito_id'=>'',
-            'direccion'=>'',
-            'licencia_conducir'=>'',
-            'flag_vehiculo_propio'=>'',1=>'',
-            'flag_discapacidad'=>'',1=>'',
-            'link_foto'=>'',
-            'estado'=>'',
-            'cod_postal'=>'',
-            'nacionalidad'=>'',
-            'usuario_id'=>''
-                    ];
-        return $rules;
+        return new Curriculum;
+    }
+
+    public function search($q)
+    {
+        $anio =Curriculum::where('anio','like', $q.'%')
+                    ->paginate(15);
+        return $anio;
+    }
+    public function anioAll()
+    {
+        $anio =Curriculum::get();
+        return $anio;
     }
     
-}
+} 

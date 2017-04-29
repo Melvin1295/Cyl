@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('createNewUser')
 @section('module')
 Usuarios
 @stop

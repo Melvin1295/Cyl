@@ -223,8 +223,11 @@ Route::post('api/colaboradores/uploadFile',['as'=>'product_disabled', 'uses'=>'C
 
 // empieza rutas CYL -------
 
-Route::get('usuarios/create',['as'=>'person','uses'=>'PageController@index']);
-Route::get('usuarios/form-create',['as'=>'person_create','uses'=>'PageController@form_ceate']);
+
+Route::get('pages/curriculum',['as'=>'person','uses'=>'PageController@index']);
+Route::get('pages/form-curriculum',['as'=>'person_create','uses'=>'PageController@form_curriculum']);
+Route::get('pages/create',['as'=>'person','uses'=>'PageController@index']);
+Route::get('pages/form-create',['as'=>'person_create','uses'=>'PageController@form_ceate']);
 Route::get('api/allYears/registro','PageController@allAnio');
 Route::get('api/allMes/registro','PageController@allMes');
 Route::get('api/allDia/registro','PageController@allDia');
@@ -234,8 +237,17 @@ Route::get('api/allProvince/registro','PageController@allProvince');
 Route::get('api/allArea/registro','PageController@allArea');
 Route::get('api/allSector/registro','PageController@allSector');
 Route::get('api/allProfesion/registro','PageController@allProfesion');
+Route::post('api/postulaciones/create',['as'=>'person_create', 'uses'=>'PageController@create']);
+Route::get('api/curriculums/paginate','PageController@curriculums');
 
-Route::get('api/anuncio/search/{object?}','PageController@anuncio');
+Route::get('pages/form-verAnuncio',['as'=>'person','uses'=>'PageController@form_verAnuncio']);
+Route::get('pages/verAnuncio/{id?}',['as'=>'person','uses'=>'PageController@index']);
+
+Route::get('api/anuncio/search','PageController@anuncio');
+Route::get('api/anuncio/find/{id}',['as'=>'person_find', 'uses'=>'PageController@findAnuncio']);
+Route::get('api/postulacion/search/{q}',['as' => 'user_paginate', 'uses' => 'PageController@allPostulacion']);
+
+
 
 Route::get('api/all1/registro','PostulanteController@allPostulante');
 Route::get('api/all2/registro','PostulanteController@all2');
@@ -247,7 +259,6 @@ Route::get('api/all6/registro','PostulanteController@all6');
 Route::post('api/postulante/create',['as'=>'person_create', 'uses'=>'PostulanteController@create']);
 Route::post('api/postulante/uploadFile',['as'=>'product_disabled', 'uses'=>'PostulanteController@uploadFile']);
 Route::get('api/findPostulante/ver/{id}','PostulanteController@findPostulante');
-//========================================================
 Route::get('api/traerpostulante/registro',['as'=>'store_all', 'uses'=>'PostulanteController@traerpostulante']);
 Route::get('api/perfilpostulante/ver/{id}','PostulanteController@perfilpostulante');
 Route::get('api/experienciapostulante/ver/{id}','PostulanteController@experienciapostulante');
@@ -255,3 +266,10 @@ Route::get('api/formacionpostulante/ver/{id}','PostulanteController@formacionpos
 Route::get('api/idiomaspostulante/ver/{id}','PostulanteController@idiomaspostulante');
 Route::get('api/programapostulante/ver/{id}','PostulanteController@programapostulante');
 Route::get('api/conocimientospostulante/ver/{id}','PostulanteController@conocimientospostulante');
+
+
+Route::post('api/curriculum/create',['as'=>'person_create', 'uses'=>'PageController@createCurriculum']);
+Route::post('api/curriculum/uploadFile',['as'=>'product_disabled', 'uses'=>'PageController@uploadFile']);
+
+Route::put('api/postulante/edit',['as'=>'person_edit', 'uses'=>'PostulanteController@edit']);
+

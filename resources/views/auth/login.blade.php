@@ -67,8 +67,8 @@
           <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Iniciar sesión usando Google+</a>
         </div> --> <!-- /.social-auth-links -->
 
-        <!--<a href="#">Olvidé mi contraseña</a><br>
-        <a href="register.html" class="text-center">Registrar nuevo usuario</a>-->
+        
+        <a href="/pages" class="text-center">Registrar nuevo usuario</a>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
