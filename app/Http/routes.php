@@ -269,7 +269,12 @@ Route::get('api/conocimientospostulante/ver/{id}','PostulanteController@conocimi
 
 
 Route::post('api/curriculum/create',['as'=>'person_create', 'uses'=>'PageController@createCurriculum']);
+
 Route::post('api/curriculum/uploadFile',['as'=>'product_disabled', 'uses'=>'PageController@uploadFile']);
 
 Route::put('api/postulante/edit',['as'=>'person_edit', 'uses'=>'PostulanteController@edit']);
+
+
+Route::post('api/userPage/create',['as'=>'person_create', 'uses'=>'PageController@createUser']);
+Route::post('api/curriculum/uploadFile',['as'=>'product_disabled', 'uses'=>'PageController@uploadFile']);
 

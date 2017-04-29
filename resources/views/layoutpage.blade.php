@@ -8,6 +8,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+
+    <script>
+                  $(document).ready(function() {
+                   /* Try to dis-comment this:
+                   $('#a').click(function () {
+                    alert('jQuery.click()');
+                    return true;
+                   });
+                   */
+                  });
+                  function button_onClick() {
+                   $('#a').click();
+                   
+                  }
+                  function Redirect() {
+                    window.location="/pages/editoriales";
+                   }
+                   function Redirect1() {
+                    window.location="/pages";
+                   }
+             </script>
     <!-- ==========================
     	Title 
     =========================== -->
@@ -24,6 +45,15 @@
     <!-- ==========================
     	Fonts 
     =========================== -->
+   
+    <!-- FontAwesome 4.3.0 -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons 2.0.0 -->
+    <link href="/vendor/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="/vendor/adminlte/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -36,6 +66,7 @@
      <link href="{{ asset('assets/css/color-switcher.css') }}" rel="stylesheet">
      <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
      <link href="{{ asset('assets/css/color/red.css') }}" rel="stylesheet">
+
 
 @section('base_url')
 @show
@@ -70,6 +101,7 @@
             <li id="pink" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pink"></li>
         </ul>
     </div>
+    <?php $nuevo = Auth()->user()->nuevo; ?>
   <header class="navbar navbar-default navbar-static-top" >
     	<div class="container">
             <div class="navbar-header">
@@ -78,18 +110,90 @@
             </div>
             <div class="navbar-collapse collapse">
             	<ul class="nav navbar-nav">
+                  @if($nuevo==2)
                 	<li class="active" ><a href="/pages" onclick="myFunction()">Mi Area</a></li>                  
                    
                     <li><a href="/pages/blog" onclick="myFunction()">Mis Postulaciones</a></li>
                     <li><a href="/pages/indicadores" onclick="myFunction()">Buscar Avizos</a></li>
-                    <li><a href="/pages/editoriales" onclick="myFunction()">Mi Curriculum</a></li>                  
+                    <li><a href="/pages/editoriales" onclick="myFunction()">Mi Curriculum</a></li>    
+                   @endif              
                 </ul>
                 <div class="navbar-right hidden-xs">
                 	<form id="search-form" class="hidden-xs hidden-sm">
                     	<fieldset>
                             <div class="input-group">
-                            	<input type="text" class="form-control">
-                            	<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+                            	<ul class="nav navbar-nav">
+
+                <style type="text/css">
+                 .imgLogin{
+                          width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  margin-right: 10px;
+  margin-top: 4px;
+                 }
+                </style>
+
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-top: -5px;
+  width: 250px;">
+                  <img src="{{Auth()->user()->image}}" class="user-image imgLogin" alt="User Image" />
+                  <span class="hidden-xs"> @if(!empty(Auth()->user())){{Auth()->user()->name}} @else Not user @endif</span>
+                  <!--
+                  @if(!empty(Auth::user()))
+                  {{Auth::user()->name}}
+                  @else
+                  {{'No estas logueado'}}
+                  @endif
+                  </span>
+                  -->
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header" style="  text-align: center;">
+                    <img src="{{Auth()->user()->image}}" style="  width: 70px;" class="img-circle" alt="User Image" />
+                    <p>
+                    @if(!empty(Auth()->user()))
+                      {{Auth()->user()->name}}
+                      <small>Miembro desde {{Auth()->user()->created_at}}</small>
+                    <p class="text-muted text-center">{{Auth()->user()->email}}</p>
+                      @else
+                        Not user
+                        <small>Miembro desde --</small>
+                      @endif
+                    </p>
+                  </li>
+                  <!-- Menu Body -->
+                  <!--<li class="user-body">
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Followers</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Sales</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Friends</a>
+                    </div>
+                  </li>-->
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left" style="  margin-left: 10px;  margin-bottom: 10px;">
+                      <a href="/users/edit/{{Auth()->user()->id}}" class="btn btn-default btn-flat">Profile</a>
+                    </div>
+                    <div class="pull-right" style="  margin-right: 10px;  margin-bottom: 10px;">
+                      <a href="/auth/logout" class="btn btn-default btn-flat">Salir</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+             
+            </ul>
                             </div>
                         </fieldset>
                     </form>
@@ -97,12 +201,7 @@
                 </div>
             </div>
         </div>
-                        <script>
-                            function myFunction() {
-                                //alert("hola");
-                               document.write('<?php $ruta=$_SERVER['REQUEST_URI']; ?>');
-                            }
-                        </script>
+                     
         </header>
        
      
@@ -111,8 +210,17 @@
     
     
   <div class="content-wrapper">
-       @yield('content')  
-    
+       @yield('content')         
+          @if($nuevo == 1 && Request::path() != 'pages/editoriales')
+            <body onload="Redirect()">             
+                    
+            </body>
+          @endif
+          @if(Request::is('/') && $nuevo == 2)
+             <body onload="Redirect1()">             
+                    
+            </body>
+          @endif
   </div>
   
 </body>

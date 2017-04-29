@@ -33,12 +33,12 @@
 
                     <div class="form-group" ng-class="{true: 'has-error'}[ colaboradorCreateForm.nombres.$error.required && colaboradorCreateForm.$submitted || colaboradorCreateForm.nombres.$dirty && colaboradorCreateForm.nombres.$invalid]">
                       <label for="nombres">Nombre</label>
-                      <input type="text" class="form-control" name="nombres" placeholder="Nombre"</ ng-model="colaborador.nombres" required>
+                      <input type="text" class="form-control" name="nombres" placeholder="Nombre" ng-model="user.name" required>
                       
                     </div>
                     <div class="form-group" ng-class="{true: 'has-error'}[ colaboradorCreateForm.apellidos.$error.required && colaboradorCreateForm.$submitted || colaboradorCreateForm.apellidos.$dirty && colaboradorCreateForm.apellidos.$invalid]">
                       <label for="apellidos">Apellidos</label>
-                      <input type="text" class="form-control" name="apellidos" placeholder="Apellidos"</ ng-model="colaborador.apellidos" required>
+                      <input type="text" class="form-control" name="apellidos" placeholder="Apellidos"</ ng-model="user.apellido" required>
                       
                     </div>
 
@@ -46,14 +46,14 @@
                       <div class="col-md-6">
                           <div class="form-group" ng-class="{true: 'has-error'}[ colaboradorCreateForm.cargo.$error.required && colaboradorCreateForm.$submitted || colaboradorCreateForm.cargo.$dirty && colaboradorCreateForm.cargo.$invalid]">
                       <label for="cargo">Usuario</label>
-                      <input type="text" class="form-control" name="cargo" placeholder="Cargo"</ ng-model="colaborador.cargo" required>
+                      <input type="text" class="form-control" name="cargo" placeholder="Cargo"</ ng-model="user.email" required>
                       
                     </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
                           <label>Contraseña:</label>
-                          <input type="password" class="form-control" name="cargo" placeholder="Cargo"</ ng-model="colaborador.cargo" required>
+                          <input type="password" class="form-control" name="cargo" placeholder="Cargo" ng-model="user.password" required>
                       </div>
                       </div>
                     </div>
@@ -63,7 +63,8 @@
                     <div class="box-footer">
                     <button  class="btn btn-primary" ng-click="registerUser()">Registrar</button>
                    
-                    <a href="/colaboradores" class="btn btn-danger">Cancelar</a>
+                   
+                    <button  class="btn btn-danger" ng-click="registerUserCaselar()">Cancelar</button>
                   </div>
                 </form>
               </div><!-- /.box -->

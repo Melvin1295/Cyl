@@ -39,6 +39,9 @@ use Salesfly\Salesfly\Managers\PostulacionManager;
 use Salesfly\Salesfly\Repositories\CurriculumRepo;
 use Salesfly\Salesfly\Managers\CurriculumManager;
 
+use Salesfly\Salesfly\Repositories\UserRepo;
+use Salesfly\Salesfly\Managers\UserManager;
+
 
 class PageController extends Controller {
 
@@ -48,7 +51,7 @@ class PageController extends Controller {
     public function __construct(AnioRepo $anioRepo,MesRepo $mesRepo,DiaRepo $diaRepo,AreaRepo $areaRepo,
         DepartamentoRepo $departamentoRepo,DistritoRepo $distritoRepo,ProvinceRepo $provinceRepo,
         ProfesionRepo $profesionRepo,
-        SectorRepo $sectorRepo,PostulacionRepo $postulacionRepo,CurriculumRepo $curriculumRepo)
+        SectorRepo $sectorRepo,PostulacionRepo $postulacionRepo,CurriculumRepo $curriculumRepo,UserRepo $userRepo)
     {
         $this->anioRepo = $anioRepo;
         $this->mesRepo = $mesRepo;
@@ -61,6 +64,7 @@ class PageController extends Controller {
         $this->profesionRepo = $profesionRepo;
         $this->postulacionRepo = $postulacionRepo;
         $this->curriculumRepo = $curriculumRepo;
+         $this->userRepo = $userRepo;
     }
 
 
@@ -111,7 +115,7 @@ class PageController extends Controller {
    }
    public function curriculums(){
         //var_dump($request->all());die();
-       $curri = $this->curriculumRepo->paginate(15);       
+       $curri = $this->curriculumRepo->paginate2(15);       
        return response()->json($curri);
    }
 
@@ -129,7 +133,7 @@ class PageController extends Controller {
 //user = \Auth::user();
         $object['estado']=1;
         $object['anuncio_id']=$request->input('idAnun');
-        $object['usuario_id']=1;
+        $object['usuario_id']=Auth()->user()->id;
         $object['fecha_postula']=date("Y-m-d");
         $postulacion = $this->postulacionRepo->getModel();
         $manager = new PostulacionManager($postulacion,$object);
@@ -143,7 +147,7 @@ class PageController extends Controller {
         $object['defecto']=1;
         $object['nombre']=$request->input('nombre');
         $object['estado']=1;
-        $object['usuario_id']=1;
+        $object['usuario_id']=Auth()->user()->id;
         $curriculum = $this->curriculumRepo->getModel();
         $manager = new CurriculumManager($curriculum,$object);
         $manager->save();
@@ -197,6 +201,21 @@ class PageController extends Controller {
 
    public function form_curriculum(){
        return View('pages.form_curriculum');
+   }
+   public function createUser(Request $request){
+       $request->merge(['role_id'=>1]);
+       $request->merge(['name'=>$request->input('apellido').' '.$request->input('name')]);
+       $request->merge(['password'=>bcrypt($request->input('password'))]);
+       $request->merge(['image'=>'/images/users/default.png']);
+       $request->merge(['estado'=>1]);
+       $request->merge(['nuevo'=>1]);
+       $user = $this->userRepo->getModel();
+        $manager = new UserManager($user,$request->all());
+        $manager->save();
+
+        return response()->json(['estado'=>true]);
+
+    
    }
     
 }

@@ -26,12 +26,17 @@ use Salesfly\Salesfly\Managers\FormacionManager;
 use Salesfly\Salesfly\Repositories\IdiomaRepo;
 use Salesfly\Salesfly\Managers\IdiomaManager;
 
+use Salesfly\Salesfly\Repositories\UserRepo;
+use Salesfly\Salesfly\Managers\UserManager;
+
+
 class PostulanteController extends Controller {
 
     protected $postulanteRepo;
 
     public function __construct(PostulanteRepo $postulanteRepo,PerfilRepo $perfilRepo,ConocimientoRepo $conocimientoRepo,
-        ProgramaRepo $programaRepo,ExperienciaRepo $experienciaRepo,FormacionRepo $formacionRepo,IdiomaRepo $idiomaRepo)
+        ProgramaRepo $programaRepo,ExperienciaRepo $experienciaRepo,FormacionRepo $formacionRepo,IdiomaRepo $idiomaRepo
+        ,UserRepo $userRepo)
     {
         $this->postulanteRepo = $postulanteRepo;
         $this->perfilRepo = $perfilRepo;
@@ -40,6 +45,7 @@ class PostulanteController extends Controller {
         $this->experienciaRepo = $experienciaRepo;
         $this->formacionRepo = $formacionRepo;
         $this->idiomaRepo = $idiomaRepo;
+        $this->userRepo = $userRepo;
     }
 
      public function allPostulante(){
@@ -71,7 +77,7 @@ class PostulanteController extends Controller {
         return response()->json($post);
     }
 public function findPostulante($id){    
-        $post = $this->postulanteRepo->findPostulante($id);
+        $post = $this->postulanteRepo->findPostulante(Auth()->user()->id);
         return response()->json($post);
 } 
 
@@ -91,7 +97,7 @@ public function findPostulante($id){
     } else {
         $postulante["link_foto"] = $_SESSION['nombreArchivo'];
     }*/
-    $postulante["usuario_id"] = 1;
+    $postulante["usuario_id"] = Auth()->user()->id;
     $perfil = $request["perfil"];
     $experiencia = $request["experiencia"];
     $estudio = $request["estudio"];
@@ -147,6 +153,13 @@ public function findPostulante($id){
         $manager = new IdiomaManager($idioma1,$item);
         $manager->save();
     }
+
+
+        $usuario=$this->userRepo->find(Auth()->user()->id);
+        $usuario1=$this->userRepo->find(Auth()->user()->id);
+        $usuario['nuevo']=2;
+        $manager = new UserManager($usuario1,$usuario);
+        $manager->save();
 
 
         return response()->json(['estado'=>true, 'nombre'=>'echo']);

@@ -356,10 +356,7 @@
                     });
                 }
 	            
-                $scope.registerUser=function(){
-                    console.log($scope.user);
-                    
-                 }
+                
                  //========
                   $scope.registrarPostulante=function(){
                    $scope.allDatos = {
@@ -379,6 +376,7 @@
                          }
                       });
                 }
+
                 $scope.banderaRegistro = true;
 
                 crudService.all('traerpostulante').then(function (data){
@@ -488,6 +486,19 @@
 
                   
 
+	            
+                $scope.registerUser=function(){
+                    console.log($scope.user);
+                    crudService.create($scope.user,'userPage').then(function (data){
+                         
+                            //alert("registrado Correctamente");
+                            $window.location.href='/auth/login';
+                         
+                      });
+                 }
+                $scope.registerUserCaselar=function(){
+                    $window.location.href='/auth/login';
+                }
 
 
 

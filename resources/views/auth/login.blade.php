@@ -24,7 +24,7 @@
   <body class="login-page fondo">
     <div class="login-box ">
       <div class="login-logo">
-        <a href="../../index2.html"><b class="primername">observatorio</b><b class="segunname">Peru</b></a>
+        <a href="../../index2.html"><b class="primername">CY</b><b class="segunname">L</b></a>
       </div><!-- /.login-logo -->
       <div class="login-box-body cuadro">
         <p class="login-box-msg primername">Escibre tus credenciales para iniciar sesión</p>
@@ -68,7 +68,7 @@
         </div> --> <!-- /.social-auth-links -->
 
         
-        <a href="/pages" class="text-center">Registrar nuevo usuario</a>
+        <a href="/colaboradores/create" class="text-center">Registrar nuevo usuario</a>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
