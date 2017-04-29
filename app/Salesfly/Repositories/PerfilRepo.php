@@ -20,5 +20,13 @@ class PerfilRepo extends BaseRepo{
         $anio =Perfil::get();
         return $anio;
     }
+
+    public function perfilpostulante($id_postulante)
+    {
+        $perfil =Perfil::where('postulante_id', $id_postulante)
+                    ->orderby('id','asc')
+                    ->first();
+        return $perfil;
+    }
     
 } 

@@ -247,3 +247,11 @@ Route::get('api/all6/registro','PostulanteController@all6');
 Route::post('api/postulante/create',['as'=>'person_create', 'uses'=>'PostulanteController@create']);
 Route::post('api/postulante/uploadFile',['as'=>'product_disabled', 'uses'=>'PostulanteController@uploadFile']);
 Route::get('api/findPostulante/ver/{id}','PostulanteController@findPostulante');
+//========================================================
+Route::get('api/traerpostulante/registro',['as'=>'store_all', 'uses'=>'PostulanteController@traerpostulante']);
+Route::get('api/perfilpostulante/ver/{id}','PostulanteController@perfilpostulante');
+Route::get('api/experienciapostulante/ver/{id}','PostulanteController@experienciapostulante');
+Route::get('api/formacionpostulante/ver/{id}','PostulanteController@formacionpostulante');
+Route::get('api/idiomaspostulante/ver/{id}','PostulanteController@idiomaspostulante');
+Route::get('api/programapostulante/ver/{id}','PostulanteController@programapostulante');
+Route::get('api/conocimientospostulante/ver/{id}','PostulanteController@conocimientospostulante');

@@ -82,8 +82,6 @@ public function findPostulante($id){
         //$request->merge(array('usuario_id' => $user->id));
         //var_dump($request->postulante);die();
       
-
-
     $postulante = $request["postulante"];
     $postulante["apellidos_nombres"] = $postulante["apellido_paterno"] . " " . $postulante["apellido_materno"] . " " . $postulante["nombres"];
     //$postulante["link_foto"] = $_SESSION['nombreArchivo'];
@@ -107,10 +105,10 @@ public function findPostulante($id){
     /*$fluent->insertInto('postulante', $postulante)
             ->execute();*/
     //$idPostulante = getid($fluent);
-            var_dump($postulante1->id);
+           // var_dump($postulante1->id);
     $perfil["postulante_id"] = $postulante1->id;
     $perfil["estado"] = 1;
-    var_dump($perfil);
+    //var_dump($perfil);
     $perfil1 = $this->perfilRepo->getModel();
     $manager = new PerfilManager($perfil1,$perfil);
     $manager->save();
@@ -120,7 +118,7 @@ public function findPostulante($id){
         $item["perfil_id"] = $perfil1->id;
         $experiencia1 = $this->experienciaRepo->getModel();
         $manager = new ExperienciaManager($experiencia1,$item);
-       
+        $manager->save();
     }
 
     foreach ($estudio as $item) {
@@ -129,13 +127,7 @@ public function findPostulante($id){
         $manager = new FormacionManager($formacion1,$item);
         $manager->save();
     }
-    foreach ($idioma as $item) {
-        var_dump($item);
-        $item["perfil_id"] = $perfil1->id;
-        $idioma1 = $this->idiomaRepo->getModel();
-        $manager = new IdiomaManager($idioma1,$item);
-        $manager->save();
-    }
+    
     foreach ($programa as $item) {
         $item["perfil_id"] = $perfil1->id;
         $programa1 = $this->programaRepo->getModel();
@@ -146,6 +138,14 @@ public function findPostulante($id){
         $item["perfil_id"] = $perfil1->id;
         $conocimiento1 = $this->conocimientoRepo->getModel();
         $manager = new ConocimientoManager($conocimiento1,$item);
+        $manager->save();
+    }
+
+    foreach ($idioma as $item) {
+        //var_dump($item);
+        $item["perfil_id"] = $perfil1->id;
+        $idioma1 = $this->idiomaRepo->getModel();
+        $manager = new IdiomaManager($idioma1,$item);
         $manager->save();
     }
 
@@ -181,8 +181,39 @@ public function findPostulante($id){
 
         return response()->json(['estado'=>true, 'nombre'=>$indicators->nombreTienda]);
     }
+    public function traerpostulante()
+    {
+        $user = \Auth::user();
+        $user_id=$user->id;
+        $menus = $this->postulanteRepo->traerpostulante($user_id);
+        return response()->json($menus);
+    }
 
-    
+    public function perfilpostulante($id_postulante){    
+        $post = $this->perfilRepo->perfilpostulante($id_postulante);
+        return response()->json($post);
+    }
+    public function experienciapostulante($perfil_id){    
+        $post = $this->experienciaRepo->experienciapostulante($perfil_id);
+        return response()->json($post);
+    }  
+    public function formacionpostulante($perfil_id){    
+        $post = $this->formacionRepo->formacionpostulante($perfil_id);
+        return response()->json($post);
+    }
+    public function idiomaspostulante($perfil_id){    
+        $post = $this->idiomaRepo->idiomaspostulante($perfil_id);
+        return response()->json($post);
+    } 
+    public function programapostulante($perfil_id){    
+        $post = $this->programaRepo->programapostulante($perfil_id);
+        return response()->json($post);
+    }
+    public function conocimientospostulante($perfil_id){    
+        $post = $this->conocimientoRepo->conocimientospostulante($perfil_id);
+        return response()->json($post);
+    }       
+          
     
     
 }

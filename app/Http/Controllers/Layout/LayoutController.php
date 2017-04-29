@@ -12,7 +12,7 @@ class LayoutController extends Controller
     protected $layout;
 
     public function __construct(){
-        $this->layout = 'layout';
+        $this->layout = 'layoutpage';
         $this->middleware('auth');
     }
 

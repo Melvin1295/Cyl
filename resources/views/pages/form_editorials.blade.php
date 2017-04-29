@@ -638,7 +638,7 @@
         <label>Nivel de Estudios*:</label>
     </div>
     <div class="col col-lg-4">
-        <input type="text" class="form-control" placeholder="" ng-model="estudio.nivel_estudio" ng-required="false" >
+        <input type="text" class="form-control" placeholder="" ng-model="estudio.nivel_estudios" ng-required="false" >
     </div>
 </div>
 <br>
@@ -728,7 +728,7 @@
                                         <div class="panel-body">
                                             <div class="row justify-content-md-center">
                                                 <div class="col col-lg-7" >
-                                                    <div style="color:black;">@{{pan.nivel_estudio}}</div>
+                                                    <div style="color:black;">@{{pan.nivel_estudios}}</div>
                                                 </div>
                                                 <div class="col col-lg-5" style="text-align:right;"> 
                                                     <a ng-click="deleteEstudio($index)" href="#"><label class="glyphicon glyphicon-remove"></label></a>
@@ -761,7 +761,7 @@
         <label>Nivel de Estudios*:</label>
     </div>
     <div class="col col-lg-4">
-        <input type="text" class="form-control" placeholder="" ng-model="estudio.nivel_estudio" ng-required="false" >
+        <input type="text" class="form-control" placeholder="" ng-model="estudio.nivel_estudios" ng-required="false" >
     </div>
 </div>
 <br>
@@ -828,7 +828,7 @@
     <div class="col col-lg-2">
         <div class="form-group">
             <select ng-model="estudio.anio_fin" name="mes_ini" class="form-control">
-                <option value="">A単o Hasta</option>
+                <option value="">Año Hasta</option>
                 <option ng-repeat="i in anio" value="@{{i.anio}}">@{{i.anio}}</option>               
             </select>
             </select>

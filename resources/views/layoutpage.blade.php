@@ -144,6 +144,8 @@
     <script src="{{ asset('assets/js/creative-brands.js') }}"></script>
     <script src="{{ asset('assets/js/color-switcher.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+      <script src="/js/app/pages/app.js"></script>
+    <script src="/js/app/pages/controllers.js"></script>
 
     
  @section('js-customize')

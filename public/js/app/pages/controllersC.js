@@ -1,6 +1,6 @@
 (function(){
     angular.module('pages.controllers',[])
-        .controller('PageController',['$window','$scope', '$interval','$routeParams','$location','crudService' ,'$filter','$route','$log',
+        .controller('CurriculoController',['$window','$scope', '$interval','$routeParams','$location','crudService' ,'$filter','$route','$log',
             function($window,$scope,$interval, $routeParams,$location,crudService,$filter,$route,$log){
     $scope.mostraVentanaExperienciaEdit = false;
     $scope.estudioVentanaEdit = false;
@@ -30,13 +30,12 @@
     $scope.filtro={};
     $scope.profesiones=[];
     $scope.postulante={};
-    
+
+     
     crudService.all('allProfesion').then(function (data){
                         $scope.profesiones = data;
                        
-     });
-
-    alert('Hola');
+     });    
 
     crudService.all('allYears').then(function (data){
                         $scope.anio = data;
@@ -52,7 +51,7 @@
      });
      crudService.all('allDistrito').then(function (data){
                         $scope.distrito = data;
-     });
+     }); 
      crudService.all('allProvince').then(function (data){
                         $scope.provincia = data;
      });
@@ -304,6 +303,40 @@
                          }
                       });
                 }
+                crudService.all('traerpostulante').then(function (data){
+                    $scope.postulante = data;  
+                    if($scope.postulante!=undefined){
+                        crudService.ver('perfilpostulante',$scope.postulante.id).then(function (data){
+                            $scope.perfil= data;
+                            crudService.ver('experienciapostulante',$scope.perfil.id).then(function (data){
+                                $scope.experiencias = data;
+                                for (var i = 0; i < $scope.experiencias.length; i++) {
+                                    $scope.experiencias[i].opcion = 0;
+                                }
+                                
+                            });
+                            crudService.ver('formacionpostulante',$scope.perfil.id).then(function (data){
+                                $scope.estudios = data;
+                                for (var i = 0; i < $scope.estudios.length; i++) {
+                                    $scope.estudios[i].opcion = 0;
+                                }
+
+                            });
+                            crudService.ver('idiomaspostulante',$scope.perfil.id).then(function (data){
+                                $scope.idiomas = data;
+                            });
+                            crudService.ver('programapostulante',$scope.perfil.id).then(function (data){
+                                $scope.programas = data;
+                            });
+                            crudService.ver('conocimientospostulante',$scope.perfil.id).then(function (data){
+                                $scope.conocimientos = data;
+                            });
+                        });
+                    };
+
+                                         
+                });  
+
 	            
 
 

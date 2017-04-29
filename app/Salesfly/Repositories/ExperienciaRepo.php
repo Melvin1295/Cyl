@@ -20,5 +20,11 @@ class ExperienciaRepo extends BaseRepo{
         $experiencia =Experiencia::get();
         return $experiencia;
     }
+     public function experienciapostulante($id_perfil)
+    {
+        $experiencia =Experiencia::where('perfil_id', $id_perfil)
+                    ->get();
+        return $experiencia;
+    }
     
 } 
