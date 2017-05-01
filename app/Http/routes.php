@@ -277,4 +277,5 @@ Route::put('api/postulante/edit',['as'=>'person_edit', 'uses'=>'PostulanteContro
 
 Route::post('api/userPage/create',['as'=>'person_create', 'uses'=>'PageController@createUser']);
 Route::post('api/curriculum/uploadFile',['as'=>'product_disabled', 'uses'=>'PageController@uploadFile']);
+Route::post('api/curriculum/destroy',['as'=>'person_destroy', 'uses'=>'PageController@destroyCurriculum']);
 

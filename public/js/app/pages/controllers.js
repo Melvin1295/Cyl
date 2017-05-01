@@ -54,10 +54,57 @@
           });
     }
     if($location.path() == '/pages/curriculum') {
+        $scope.subirCurriculum=function(){
+                        var file_archivo = $scope.file_archivo;
+                        if (file_archivo!=undefined) {
+                            crudService.uploadFile('curriculum',file_archivo, name).then(function(data)
+                            {
+                                $scope.curriculum.nombre=data.data;
+                                crudService.create($scope.curriculum,'curriculum').then(function(data)
+                                {
+                                       alert("El archivo subio correctamente!!");
+                                       $('#exampleModalLong').modal('hide');
+                                       //$route.reload();
+                                       crudService.paginate('curriculums',1).then(function (data){
+                                            $scope.curriculums = data.data;
+                                            console.log('$scope.curriculums');
+                                            console.log($scope.curriculums);
+                                            console.log(data);
+                                           
+                                         });
+
+                                });
+                            });
+                        }else{
+                            alert("errore el archivo al cargar por favor intentelo nuevamente!!!");
+                        }
+        }
          crudService.paginate('curriculums',1).then(function (data){
                         $scope.curriculums = data.data;
+                        console.log('$scope.curriculums');
+                        console.log($scope.curriculums);
+                        console.log(data);
                        
           });
+         $scope.destroyCurriculum= function(row){
+            crudService.destroy(row,'curriculum').then(function(data)
+            {
+                if(data['estado'] == true){
+                    alert("Curriculum Eliminado Correctamente");
+                    //$route.reload();
+                    crudService.paginate('curriculums',1).then(function (data){
+                                            $scope.curriculums = data.data;
+                                            console.log('$scope.curriculums');
+                                            console.log($scope.curriculums);
+                                            console.log(data);
+                                           
+                                         });
+
+                }else{
+                    $scope.errors = data;
+                }
+            });
+        }
     }
     $scope.filtroPostulaciones=function(){
          crudService.search('postulacion',$scope.estadoPostulacion,1).then(function (data){
@@ -104,21 +151,7 @@
                         $scope.postulante= data;
      });
 
-     $scope.subirCurriculum=function(){
-                        var file_archivo = $scope.file_archivo;
-                        if (file_archivo!=undefined) {
-                            crudService.uploadFile('curriculum',file_archivo, name).then(function(data)
-                            {
-                                $scope.curriculum.nombre=data.data;
-                                crudService.create($scope.curriculum,'curriculum').then(function(data)
-                                {
-                                       alert("el archivo subio correctamente!!");
-                                });
-                            });
-                        }else{
-                            alert("errore el archivo al cargar por favor intentelo nuevamente!!!");
-                        }
-     }
+     
      $scope.buscarAnuncios=function(){
           crudService.searchAll($scope.filtros,'anuncio').then(function (data){
                         $scope.anuncios = data.data;
@@ -280,7 +313,6 @@
     $scope.anuncio = {};
     
     $scope.agregarIdioma = function () {
-      alert("hola");
         if ($scope.idioma.idioma != undefined  && $scope.idioma.nivel_idioma != undefined) {
             $scope.idiomas.push($scope.idioma);
             $scope.idioma = {};
@@ -356,7 +388,9 @@
                     });
                 }
 	            
-                
+                $scope.editar=function(){
+                     $window.location.href='/pages/editoriales';
+                }
                  //========
                   $scope.registrarPostulante=function(){
                    $scope.allDatos = {
@@ -371,8 +405,9 @@
                     console.log($scope.allDatos);
                     crudService.create($scope.allDatos,'postulante').then(function (data){
                          if(data['estado'] ==true){
-                            alert("registrado Correctamente");
-                            $location.path('/pages');
+                            alert("Registrado Correctamente");
+                            
+                            $window.location.href='/pages';
                          }
                       });
                 }
@@ -381,6 +416,7 @@
 
                 crudService.all('traerpostulante').then(function (data){
                     $scope.postulante = data;
+                    console.log('$scope.postulante');
                     console.log($scope.postulante);
 
                     if ( $scope.postulante.flag_discapacidad === "1") {
@@ -393,7 +429,7 @@
                     }else{
                         $scope.postulante.flag_vehiculo_propio = false;
                     }
-                    if($scope.postulante!=undefined){
+                    if($scope.postulante.id!=undefined){
                         $scope.banderaRegistro = false;
                         crudService.ver('perfilpostulante',$scope.postulante.id).then(function (data){
                             $scope.perfil= data;
@@ -438,7 +474,7 @@
                                 $scope.updatePostulante();
                             });
                         }else{
-                            $scope.postulante.link_foto="";
+                            //$scope.postulante.link_foto="";
                             $scope.updatePostulante();
                         }
                    // }                       

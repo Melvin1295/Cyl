@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 
 use Salesfly\Salesfly\Repositories\PostulanteRepo;
 use Salesfly\Salesfly\Managers\PostulanteManager;
+use Salesfly\Salesfly\Entities\User;
 
 use Salesfly\Salesfly\Repositories\PerfilRepo;
 use Salesfly\Salesfly\Managers\PerfilManager;
@@ -155,11 +156,23 @@ public function findPostulante($id){
     }
 
 
-        $usuario=$this->userRepo->find(Auth()->user()->id);
-        $usuario1=$this->userRepo->find(Auth()->user()->id);
-        $usuario['nuevo']=2;
-        $manager = new UserManager($usuario1,$usuario);
-        $manager->save();
+        /*$usuario1=$this->userRepo->find(Auth()->user()->id);
+        $costoCotizacion = new User() ;
+        $usuario1->name=$usuario1['name'];
+        $usuario1->email=$usuario1['email'];
+        $usuario1->password=$usuario1['password'];
+        $usuario1->image=$usuario1['image'];
+        $usuario1->role_id=$usuario1['role_id'];
+        $usuario1->estado=$usuario1['estado'];
+        $usuario1->nuevo=2;
+        $costoCotizacion->save();*/
+
+        User::
+            where('id',Auth()->user()->id)
+            ->update(['nuevo'=>2]);
+
+        //$manager = new UserManager($usuario1,$usuario1);
+        //$manager->save();
 
 
         return response()->json(['estado'=>true, 'nombre'=>'echo']);

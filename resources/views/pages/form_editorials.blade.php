@@ -206,7 +206,7 @@
                                 <label>Codigo Postal*:</label>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" placeholder="" name="codPostal" ng-model="postulante.codPostal" ng-required="false" >
+                                <input type="text" class="form-control" placeholder="" name="cod_postal" ng-model="postulante.cod_postal" ng-required="false" >
                             </div>
                         </div>
                         <br>
@@ -318,6 +318,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!--Empiesa Registro Experiencia -->
                             <content ng-show="mostraVentanaExperiencia">
                                 <!---Inicio Form Experiencia Create-->
@@ -439,6 +440,7 @@
         </div>
 
     </div>
+
     
 
 
@@ -460,7 +462,7 @@
                             </content>
                             <!--Fin Registro Experiencia -->
 
-                            <<div class="row justify-content-md-center">
+                            <div class="row justify-content-md-center">
                                 <div class="col col-lg-12" >
 
                                     <div class="panel panel-info" ng-repeat="expe in experiencias">
@@ -625,6 +627,7 @@
                                     </div>
                                 </div>
                             </div> 
+
                             <!-- Formacion -->
                             <div class="panel-footer" style="color:black;" >Formación</div>
                             <br>
@@ -697,7 +700,7 @@
     <div class="col col-lg-2">
         <div class="form-group">
             <select ng-model="estudio.anio_ini" name="mes_ini" class="form-control">
-                <option value="">A単o Desde</option>
+                <option value="">Año Desde</option>
                 <option ng-repeat="i in anio" value="@{{i.anio}}">@{{i.anio}}</option>
             </select>
             </select>
@@ -715,7 +718,7 @@
     <div class="col col-lg-2">
         <div class="form-group">
             <select ng-model="estudio.anio_fin" name="mes_ini" class="form-control">
-                <option value="">A単o Hasta</option>
+                <option value="">Año Hasta</option>
                 <option ng-repeat="i in anio" value="@{{i.anio}}">@{{i.anio}}</option>
             </select>
             </select>
@@ -733,7 +736,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </content>
+                            </content> 
 
                             <div class="row justify-content-md-center">
                                 <div class="col col-lg-12" >
@@ -821,7 +824,7 @@
     <div class="col col-lg-2">
         <div class="form-group">
             <select ng-model="estudio.anio_ini" name="mes_ini" class="form-control">
-                <option value="">A単o Desde</option>
+                <option value="">Año Desde</option>
                 <option ng-repeat="i in anio" value="@{{i.anio}}">@{{i.anio}}</option>
                 
             </select>
@@ -864,7 +867,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
                             <div class="panel-footer" style="color:black;" >Idiomas</div>
                             <br>
                             <div class="row">

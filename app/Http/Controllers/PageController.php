@@ -23,7 +23,7 @@ use Salesfly\Salesfly\Managers\DepartamentoManager;
 use Salesfly\Salesfly\Repositories\ProvinceRepo;
 use Salesfly\Salesfly\Managers\ProvinceManager;
 
-use Salesfly\Salesfly\Repositories\DistritoRepo;
+use Salesfly\Salesfly\Repositories\DistritoRepo; 
 use Salesfly\Salesfly\Managers\DistritoManager;
 
 use Salesfly\Salesfly\Repositories\SectorRepo;
@@ -217,5 +217,11 @@ class PageController extends Controller {
 
     
    }
+   public function destroyCurriculum(Request $request)
+    {
+        $curriculum= $this->curriculumRepo->find($request->id);
+        $curriculum->delete();
+        return response()->json(['estado'=>true]);
+    }
     
 }

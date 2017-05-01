@@ -2,10 +2,6 @@
     angular.module('routes',[])
         .config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
             $routeProvider
-            .when('/', {
-                    templateUrl: '/js/app/pages/views/index.html',
-                    controller: 'indexController'
-                }) 
             // ------------------------------------------------------
             .when('/pages', {
                     templateUrl: '/js/app/pages/views/index.html',
