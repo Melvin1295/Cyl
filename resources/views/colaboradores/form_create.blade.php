@@ -46,14 +46,14 @@
                       <div class="col-md-6">
                           <div class="form-group" ng-class="{true: 'has-error'}[ colaboradorCreateForm.cargo.$error.required && colaboradorCreateForm.$submitted || colaboradorCreateForm.cargo.$dirty && colaboradorCreateForm.cargo.$invalid]">
                       <label for="cargo">Usuario</label>
-                      <input type="text" class="form-control" name="cargo" placeholder="Cargo"</ ng-model="user.email" required>
+                      <input type="text" class="form-control" name="cargo" placeholder="Usuario"</ ng-model="user.email" required>
                       
                     </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
                           <label>Contraseña:</label>
-                          <input type="password" class="form-control" name="cargo" placeholder="Cargo" ng-model="user.password" required>
+                          <input type="password" class="form-control" name="cargo" placeholder="Password" ng-model="user.password" required>
                       </div>
                       </div>
                     </div>

@@ -121,8 +121,9 @@ public function findPostulante($id){
     $manager = new PerfilManager($perfil1,$perfil);
     $manager->save();
     
-
+    
     foreach ($experiencia as $item) {
+        
         $item["perfil_id"] = $perfil1->id;
         $experiencia1 = $this->experienciaRepo->getModel();
         $manager = new ExperienciaManager($experiencia1,$item);
@@ -156,7 +157,7 @@ public function findPostulante($id){
     }
         $usuario=$this->userRepo->find(Auth()->user()->id);
         $usuario1=$this->userRepo->find(Auth()->user()->id);
-        $usuario['nuevo']=2;
+        $usuario->nuevo=2;
         $manager = new UserManager($usuario1,$usuario);
         $manager->save();
 
