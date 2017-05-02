@@ -26,6 +26,19 @@
         opacity:0;
         max-height:0;
     }
+    ::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
 
     .animate-repeat.ng-leave,
     .animate-repeat.ng-move.ng-move-active,
@@ -63,8 +76,8 @@
             <small>Panel de Control</small>
           </h1>
           <ol class="breadcrumb" style="  height: 40px;">
-            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="/colaboradores"><a href="/colaboradores">Avizos</a></li>
+            <li><a href="/pages"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li ><a href="/pages/indicadores/0/x/x/-1">Avizos</a></li>
             <li class="active">Ver</li>
           </ol>
 
