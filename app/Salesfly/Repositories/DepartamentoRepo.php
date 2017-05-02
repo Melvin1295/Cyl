@@ -17,11 +17,13 @@ class DepartamentoRepo extends BaseRepo{
     }
     public function departamentoAll()
     {
-        $departamento =Departamento::get();
+        $departamento =Departamento::select('departamentos.*')
+        ->get();
         return $departamento;
     }
     public function anuncios($object){
-        
+
+
         $depart[0]=0;
         $profe[0]=0;
         $index=0;
@@ -83,7 +85,7 @@ class DepartamentoRepo extends BaseRepo{
                                       $query->whereIn ('profesiones.id',$profe)
                                             ->orWhere ('profesiones.id','<=',$departBus2);
                                   })
-                                 ->where('anuncios.titulo','like','%'.$valorBuscado.'%')
+                                 ->where('anuncios.titulo','like',$valorBuscado.'%')
                     ->paginate(15);
 
         }

@@ -6,7 +6,7 @@
           <ol class="breadcrumb" style="  height: 40px;">
             <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="/colaboradores"><a href="/colaboradores">Curriculumn</a></li>
-            <li class="active">Crear</li>
+          
           </ol>
 
           
@@ -36,10 +36,11 @@
     </thead>
     <tbody>
       <tr ng-repeat="item in curriculums">
-        <td width="80px;"><input type="checkbox" class="form-control" ></td>
+        <td width="80px;" ng-if="$index <= 0"><input type="checkbox" checked="true" class="form-control" ></td>
+        <td width="80px;" ng-if="$index > 0"><input type="checkbox"  class="form-control" ></td>
         <td width="50%">@{{item.nombre}}</td>
         <td>@{{item.created_at}}</td>
-        <td width="40px;"><button class="btn btn-info" ng-click="destroyCurriculum(item)">Eliminar</button></td>
+        <td width="40px;"><button class="btn btn-primary" ng-click="destroyCurriculum(item)">Eliminar</button></td>
       </tr>      
     </tbody>
   </table>
@@ -67,7 +68,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" ng-click="subirCurriculum()">Guardar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="subirCurriculum()">Guardar</button>
       </div>
     </div>
   </div>

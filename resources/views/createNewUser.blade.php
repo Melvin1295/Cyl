@@ -25,8 +25,6 @@
       Fonts 
     =========================== -->
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
@@ -93,12 +91,7 @@
                 </div>
             </div>
         </div>
-                        <script>
-                            function myFunction() {
-                                //alert("hola");
-                               document.write('<?php $ruta=$_SERVER['REQUEST_URI']; ?>');
-                            }
-                        </script>
+                        
         </header>
        
      
@@ -112,7 +105,6 @@
   </div>
   
 </body>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbF3aN2aKHhnjrRjSHhUlBPzN53whHB60&callback=myMap"></script>
   <script src="{{ asset('/vendor/angular/angular.js') }}"></script>
   <script src="/vendor/moment/moment.js"></script>
   <script src="/vendor/angular-route/angular-route.js"></script>

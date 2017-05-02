@@ -10,18 +10,7 @@
     
 
     <script>
-                  $(document).ready(function() {
-                   /* Try to dis-comment this:
-                   $('#a').click(function () {
-                    alert('jQuery.click()');
-                    return true;
-                   });
-                   */
-                  });
-                  function button_onClick() {
-                   $('#a').click();
-                   
-                  }
+                  
                   function Redirect() {
                     window.location="/pages/editoriales";
                    }
@@ -58,8 +47,6 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="/vendor/adminlte/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
@@ -117,7 +104,7 @@
                 	<li class="active" ><a href="/pages" onclick="myFunction()">Mi Area</a></li>                  
                    
                     <li><a href="/pages/blog" onclick="myFunction()">Mis Postulaciones</a></li>
-                    <li><a href="/pages/indicadores" onclick="myFunction()">Buscar Avizos</a></li>
+                    <li><a href="/pages/indicadores/0/x/x/-1" onclick="myFunction()">Buscar Avizos</a></li>
                     <li><a href="/pages/curriculum" onclick="myFunction()">Mi Curriculum</a></li>    
                    @endif              
                 </ul>
@@ -227,7 +214,6 @@
   </div>
   
 </body>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbF3aN2aKHhnjrRjSHhUlBPzN53whHB60&callback=myMap"></script>
   <script src="{{ asset('/vendor/angular/angular.js') }}"></script>
   <script src="/vendor/moment/moment.js"></script>
   <script src="/vendor/angular-route/angular-route.js"></script>
@@ -254,7 +240,6 @@
     <script src="{{ asset('assets/js/typed.min.js') }}"></script>
     <script src="{{ asset('assets/js/creative-brands.js') }}"></script>
     <script src="{{ asset('assets/js/color-switcher.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
       <script src="/js/app/pages/app.js"></script>
     <script src="/js/app/pages/controllers.js"></script>
 

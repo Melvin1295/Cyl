@@ -18,7 +18,7 @@
     <form name="form" name="registroCreateForm">
         <div class="row justify-content-md-center">
             <div class="col col-lg-11" style="margin-left:4%;">
-                <div class="panel panel-warning" >
+                <div class="panel panel-primary" >
                     <div class="panel-heading">Datos Personales</div>
                     <div class="panel-body">
                         <div class="callout callout-danger" ng-show="registroCreateForm.$invalid">
@@ -996,8 +996,8 @@
                             <div class="row">
                                 <div class="col-sm-12" style="text-align: center;">
                                     <a type="button" class="btn btn-default"  href="index.php" >Regresar</a>
-                                    <button ng-if="banderaRegistro" type="button" class="btn btn-info" ng-click="uploadFile()" >Registrar</button>
-                                    <button ng-if="!banderaRegistro" type="button" class="btn btn-info" ng-click="uploadEditFile()" >Actualizar</button>
+                                    <button ng-if="banderaRegistro" type="button" class="btn btn-primary" ng-click="uploadFile()" >Registrar</button>
+                                    <button ng-if="!banderaRegistro" type="button" class="btn btn-primary" ng-click="uploadEditFile()" >Actualizar</button>
                                     <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                 </div>
                             </div>

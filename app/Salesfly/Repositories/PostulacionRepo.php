@@ -18,16 +18,16 @@ class PostulacionRepo extends BaseRepo{
     public function allPostulacion($q)
     { 
               if($q == 10){
-                  $postulacion =Postulacion::join('anuncios','anuncios.id','=','postulaciones.id')
+                  $postulacion =Postulacion::join('anuncios','anuncios.id','=','postulaciones.anuncio_id')
                                  ->join('departamentos','departamentos.id','=','anuncios.departamento_id')
                                  ->select('postulaciones.*','anuncios.titulo','departamentos.nombre')
-                                 ->where('postulantes.usuario_id','=',Auth()->user()->id)
+                                 ->where('postulaciones.usuario_id','=',Auth()->user()->id)
                                  ->paginate(15);
               }else{
-                  $postulacion =Postulacion::join('anuncios','anuncios.id','=','postulaciones.id')
+                  $postulacion =Postulacion::join('anuncios','anuncios.id','=','postulaciones.anuncio_id')
                                  ->join('departamentos','departamentos.id','=','anuncios.departamento_id')
                                  ->select('postulaciones.*','anuncios.titulo','departamentos.nombre')
-                                  ->where('postulantes.usuario_id','=',Auth()->user()->id)
+                                  ->where('postulaciones.usuario_id','=',Auth()->user()->id)
                                 ->where('postulaciones.estado','=', $q)
                                ->paginate(15);
               }

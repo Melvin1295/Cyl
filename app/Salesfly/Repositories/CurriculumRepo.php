@@ -24,7 +24,7 @@ class CurriculumRepo extends BaseRepo{
     public function paginate2()
     {
         $curriculum =Curriculum::where('usuario_id','=',  Auth()->user()->id)
-           ->paginate(15);
+           ->get();
         return $curriculum;
     }
     

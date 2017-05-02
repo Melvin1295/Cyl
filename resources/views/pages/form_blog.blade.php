@@ -6,7 +6,7 @@
           <ol class="breadcrumb" style="  height: 40px;">
             <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="/colaboradores"><a href="/colaboradores">Mis Postulaciones</a></li>
-            <li class="active">Crear</li>
+            <li class="active">Ver</li>
           </ol>
 
           
@@ -140,7 +140,7 @@
                                     
                                 </div>
                                 <div class="col-lg-2" style="text-align: right;">
-                                    <button class="btn btn-warning"><small>26 Postulantes</small><br><b>Ver Comprativa</b></button>
+                                    <button class="btn btn-primary"><small>26 Postulantes</small><br><b>Ver Comprativa</b></button>
                                 </div>
                             </div><hr style="margin-bottom: -20px; ">
                         </div>

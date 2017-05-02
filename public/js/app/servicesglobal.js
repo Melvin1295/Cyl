@@ -38,10 +38,10 @@
 
                 return deferred.promise;
             }
-             function searchAll(area,uri)
+             function searchAll(area,uri,page)
             {
                  var deferred = $q.defer();
-                $http.get('/api/'+uri+'/search', area).success(function (data) {
+                $http.post('/api/'+uri+'/search', area).success(function (data) {
                     deferred.resolve(data);
                 });
 
@@ -67,7 +67,7 @@
                         deferred.resolve(data);
                     }).error(function(data)
                 {
-                    //$log.log(data);
+                   // $log.log(data);
                     alert('No se puede Agregar: Datos incorrectos o repetidos');
                 });
                 //    .error(function (data) //add for user , error send by 422 status

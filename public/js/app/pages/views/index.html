@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="row" style="margin-left:6%;">
-                    <div class="panel panel-success">
+                    <div class="panel panel-primary">
                         <div class="panel-body">
                             <div class="row">
                                 
@@ -33,11 +33,10 @@
                                 
                             </div>                   
                         </div>
-                        <div class="panel-footer">
-                            <i class="glyphicon glyphicon-paperclip"></i>
-                            <a href="/cyl_final/proyecto_postulante/postulante/curriculum.php"> Adjuntar CV</a>
-                            <i class="glyphicon glyphicon-paperclip"></i>
-                            <a href="salir.php"> Salir</a>
+                        <div class="panel-footer" style="text-align:center;">
+                            <i class="fa fa-clone"></i>
+                            <a href="/pages/curriculum"> Adjuntar CV</a>
+                           
                         </div>
                     </div>
                 </div>
@@ -51,29 +50,29 @@
                 </style>
                 <div class="row" style="margin-left:6%;">
 
-                    <div class="panel panel-success">
+                    <div class="panel panel-primary">
                         <div class="panel-body">
                             <h5><b>Resumen del estado de tus postulaciones</b></h5>
                             <hr>
                             <div class="col-lg-12">
                                 <ul class="postu">
-                                    <li style="color: blue;"><i class="glyphicon glyphicon-share"></i> Te has postulado en <b>5</b> ofertas.</li>
-                                    <li style="color: red;"><i class="glyphicon glyphicon-share"></i> Empresas que han visto tu curriculum</li>
-                                    <li><i class="glyphicon glyphicon-share"></i> <b>5</b> empresas te están evaluando</li>
-                                    <li style="color: #00C872;"><i class="glyphicon glyphicon-share"></i> Procesos de selección en los que eres finalista</li>
+                                    <li style="color: blue;"><i class="fa fa-cog"></i> Te has postulado en <b>5</b> ofertas.</li>
+                                    <li style="color: red;"><i class="fa fa-cog"></i> Empresas que han visto tu curriculum</li>
+                                    <li><i class="fa fa-cog"></i> <b>5</b> empresas te están evaluando</li>
+                                    <li style="color: #00C872;"><i class="fa fa-cog"></i> Procesos de selección en los que eres finalista</li>
                                 </ul>
                             </div>
 
 
                         </div>
                         <div class="panel-footer">
-                            <h5><a href="/cyl_final/proyecto_postulante/postulante/misPostulaciones.php">Ver Todas mis Postulaciones</a></h5>
+                            <h5><a href="/pages/blog">Ver Todas mis Postulaciones</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="row" style="margin-left:6%;">
 
-                    <div class="panel panel-success">
+                    <div class="panel panel-primary">
                         <div class="panel-body">
                             <h5><b>Test de Competencias Laborales</b></h5>
                             <hr>
@@ -89,7 +88,7 @@
                                 </div>
                                 <div class="col-sm-4 abt-gd-left text-center">         
                                     <div id="demo-pie-4" class="pie-title-center" data-percent="15"> <span class="pie-value"></span> </div>
-                                    <label style="color: white;">Motivaci贸n</label>
+                                    <label style="color: white;">Motivacion</label>
                                 </div>
                             </div></div>
                         <div class="panel-footer">
@@ -101,7 +100,7 @@
             <div class="col-lg-7">
                 <div class="row" style="margin-left:4%;">
 
-                    <div class="panel panel-success">
+                    <div class="panel panel-primary">
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -109,19 +108,19 @@
                                     <hr>
                                 </div>
                             </div>
-                            <form name="form" action="trabajo.php" method="post">
+                            <form name="form" >
                                 <div class="row">
                                     <div class="col-lg-5">
-                                        <input class="form-control" name="buscar" type="text">
+                                        <input class="form-control" name="buscar" ng-model="palabraBuscada" type="text">
                                     </div>
                                     <div class="col-lg-4">
-                                        <select class="form-control" name="region" >
+                                        <select class="form-control" ng-model="regionSelected" name="region" >
                                             <option value="">Region</option>
-                                            <option ng-repeat="i in departamento" value="{{i.id}}">{{i.nombre}}</option>
+                                            <option ng-repeat="i in departamento" value="{{i.id+'/'+i.nombre+'/'+$index}}">{{i.nombre}}</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-3">
-                                        <button class="btn btn-info" style="width: 100%;" type="submit">Buscar Empleos</button>
+                                        <button class="btn btn-primary" style="width: 100%;" ng-click="buscarAnunciosDesdePrincipal()" type="button">Buscar Empleos</button>
                                     </div>
                                 </div>
                             </form>
@@ -131,7 +130,7 @@
                 </div>
                 <div class="row" style="margin-left:4%;">
 
-                    <div class="panel panel-success">
+                    <div class="panel panel-primary">
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">

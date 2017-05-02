@@ -159,7 +159,7 @@ class PageController extends Controller {
         $time=time();
         if(!is_dir("images/curriculums/"))
             mkdir("images/curriculums/", 0777);
-        if($file && move_uploaded_file($_FILES["file"]["tmp_name"], "images/curriculum/".$time."_".$file))
+        if($file && move_uploaded_file($_FILES["file"]["tmp_name"], "images/curriculums/".$time."_".$file))
         {
              
         }

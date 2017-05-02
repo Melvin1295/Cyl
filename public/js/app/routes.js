@@ -37,7 +37,7 @@
                     templateUrl: '/pages/form-curriculum',
                     controller: 'PageController'
                 })
-            .when('/pages/indicadores', {
+            .when('/pages/indicadores/:id2/:name/:palabra/:index', {
                     templateUrl: '/pages/form-indicadores',
                     controller: 'PageController'
                 })

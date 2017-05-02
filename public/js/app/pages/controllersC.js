@@ -32,8 +32,7 @@
     $scope.postulante={};
 
     crudService.all('allProfesion').then(function (data){
-                        $scope.profesiones = data;
-                       
+                        $scope.profesiones = data                      
      });    
 
     crudService.all('allYears').then(function (data){

@@ -88,7 +88,7 @@ Route::get('pages/verEditorial/{id?}',['as'=>'person','uses'=>'PageController@in
 Route::get('pages/reclamo',['as'=>'person','uses'=>'PageController@index']);
 Route::get('pages/form-reclamo',['as'=>'person','uses'=>'PageController@form_reclamo']);
 
-Route::get('pages/indicadores',['as'=>'person','uses'=>'PageController@index']);
+Route::get('pages/indicadores/{id2?}/{name?}/{palabra?}/{index?}',['as'=>'person','uses'=>'PageController@index']);
 Route::get('pages/form-indicadores',['as'=>'person','uses'=>'PageController@form_indicadores']);
 /* fin rutas de pagina web */
 Route::group(['middleware' => 'role'], function () {
@@ -243,7 +243,7 @@ Route::get('api/curriculums/paginate','PageController@curriculums');
 Route::get('pages/form-verAnuncio',['as'=>'person','uses'=>'PageController@form_verAnuncio']);
 Route::get('pages/verAnuncio/{id?}',['as'=>'person','uses'=>'PageController@index']);
 
-Route::get('api/anuncio/search','PageController@anuncio');
+Route::post('api/anuncio/search','PageController@anuncio');
 Route::get('api/anuncio/find/{id}',['as'=>'person_find', 'uses'=>'PageController@findAnuncio']);
 Route::get('api/postulacion/search/{q}',['as' => 'user_paginate', 'uses' => 'PageController@allPostulacion']);
 
@@ -270,7 +270,7 @@ Route::get('api/conocimientospostulante/ver/{id}','PostulanteController@conocimi
 
 Route::post('api/curriculum/create',['as'=>'person_create', 'uses'=>'PageController@createCurriculum']);
 
-Route::post('api/curriculum/uploadFile',['as'=>'product_disabled', 'uses'=>'PageController@uploadFile']);
+//Route::post('api/curriculum/uploadFile',['as'=>'product_disabled', 'uses'=>'PageController@uploadFile']);
 
 Route::put('api/postulante/edit',['as'=>'person_edit', 'uses'=>'PostulanteController@edit']);
 

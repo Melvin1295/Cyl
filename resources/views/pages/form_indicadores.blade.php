@@ -57,7 +57,19 @@
     }
 </style>
 
+<section class="content-header">
+          <h1>
+            Colaboradores
+            <small>Panel de Control</small>
+          </h1>
+          <ol class="breadcrumb" style="  height: 40px;">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="/colaboradores"><a href="/colaboradores">Avizos</a></li>
+            <li class="active">Ver</li>
+          </ol>
 
+          
+</section>
 <div style="height:10px;"></div>
 <div >
     <div class="row ">
@@ -67,18 +79,18 @@
 
                 <div class="col col-lg-11" style="margin-left:4%;">
             
-                    <div class="panel panel-warning">
+                    <div class="panel  panel-primary">
                         <!-- Default panel contents -->
 
                         <div class="panel-heading">Filtros</div>
                         <div class="panel-body">
                             <div class="">
 
-                                <ul class="list-group" ng-repeat="i in filtros" >
+                                <ul class="list-group"  >
                                  <div>
-                                   <li class="animate-repeat" >                                          
-                                            
-                                        <button class="btn  btn-success btn-sm" ng-click="quitarFiltro($index,i)" style="width:100%;"  >@{{i.value}}</button>
+                                   <li class="animate-repeat" ng-repeat="i in filtros" >                                         
+                                       <button class="btn btn-primary btn-sm" ng-click="quitarFiltro($index,i)" 
+                                       style="width:100%; margin-bottom: 5px;"  >@{{i.value}}<i class="fa fa-close" ></i></button>
                                     </li>
                                     </div>
                                 </ul>
@@ -91,7 +103,7 @@
                             <div class="">
                                 
                                     <input type="text" name="agregar" ng-model="palabra" class="form-control"> <br>
-                                    <button type="button" class="btn btn-warning" ng-click="palabraClave(palabra)" style="width: 100%;">Buscar</button>
+                                    <button type="button" class="btn btn-primary" ng-click="palabraClave(palabra)" style="width: 100%;">Buscar</button>
                                
                             </div>
                         </div>
@@ -105,7 +117,7 @@
                                     <li class="animate-repeat" ng-repeat="i in departamento">
                                           
                                           
-                                            <button ng-if="i.estado==1" class="btn btn-warning btn-sm" ng-click="depratamentoFiltro($index,i)" style="width:100%; margin-bottom: 5px;" >
+                                            <button ng-if="i.estado==1" class="btn btn-primary btn-sm" ng-click="depratamentoFiltro($index,i)" style="width:100%; margin-bottom: 5px;" >
                                                 @{{i.nombre}}
                                             </button>
                                         </li>
@@ -121,7 +133,7 @@
                                 <ul class="list-group">
                                   
                                    <li class="animate-repeat" ng-repeat="i in profesiones" >
-                                           <button ng-if="i.estado==1"  class="btn btn-warning btn-sm" ng-click="profesionFiltro($index,i)"
+                                           <button ng-if="i.estado==1"  class="btn btn-primary btn-sm" ng-click="profesionFiltro($index,i)"
                                            style="width:100%; margin-bottom: 5px;">@{{i.nombre}}</button>
                                     </li>
                                   
@@ -148,13 +160,13 @@
                 
             </div>
             
-                <div class="row justify-content-md-center" >
+                <div class="row" ng-repeat="row in anuncios" >
                     <div class="col col-lg-11">
-                        <a href="/cyl_final/proyecto_postulante/postulante/verAnuncio.php?id=' . $item->id . '" class="" style="color: #777;">
-                        <div class="panel panel-info link_depo">
+                        <a href="/pages/verAnuncio/@{{row.id}} " class="" style="color: #777;">
+                        <div class="panel panel-primary link_depo">
                             <!-- Default panel contents -->
 
-                            <div class="panel-body" ng-repeat="row in anuncios">
+                            <div class="panel-body" >
                                 <p><h4 style="color: black;">@{{row.titulo}}-@{{row.empresa_id}}</h4></p><hr>
                                 <p><span>@{{row.localizacion}}</span></p>
                                 <p><label style="color: black;">@{{row.descripcion_corta}}</label></p>
@@ -163,6 +175,14 @@
                         </div>
                         </a>
                     </div>
+                </div>
+                 <div class="row"  >
+                    <div class="col col-lg-11">
+                <div class="box-footer clearfix">
+                  <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm no-margin pull-right" items-per-page="itemsperPage" 
+                             boundary-links="true" rotate="false" num-pages="numPages" ng-change="pageChanged()"></pagination>
+                </div>
+                </div>
                 </div>
           
             <div class="row">
