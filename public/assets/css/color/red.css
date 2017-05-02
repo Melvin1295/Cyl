@@ -50,7 +50,7 @@ ul.blog-tags li a,
 .blog-post .blog-info .date div.number,
 #statistics,
 #coming-soon .input-group .btn {
-    background-color: #CB2027;
+    background-color: #337AB7;
 }
 
 header.navbar,
@@ -59,7 +59,7 @@ header.navbar-default .navbar-nav > li > ul.dropdown-menu,
 #search-form .input-group .btn,
 #services .row div:hover i,
 #coming-soon .input-group .btn {
-	border-color:#CB2027;
+	border-color: #337AB7;
 }
 
 @media (max-width:767px) {

@@ -4,8 +4,7 @@
             <small>Panel de Control</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="/colaboradores"><a href="/colaboradores">Colaboradores</a></li>
+            <li><a ng-click="registerUserCaselar()"><i class="fa fa-dashboard"></i> Login</a></li>
             <li class="active">Crear</li>
           </ol>
 

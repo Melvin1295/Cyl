@@ -35,7 +35,7 @@
            	   	  @{{anuncio.departNombre}}
            	   </p>
            </div>
-           <div class="panel-footer" style="text-align:center;"><button class="btn btn-info" ng-click="postularme()">Eviar CV</button></div>
+           <div class="panel-footer" style="text-align:center;"><button class="btn btn-primary" ng-click="postularme()">Eviar CV</button></div>
 
        </div>
   	  </div>
