@@ -206,7 +206,7 @@ class PageController extends Controller {
        $request->merge(['role_id'=>1]);
        $request->merge(['name'=>$request->input('apellido').' '.$request->input('name')]);
        $request->merge(['password'=>bcrypt($request->input('password'))]);
-       $request->merge(['image'=>'/images/users/default.png']);
+       $request->merge(['image'=>'/images/users/default.jpg']);
        $request->merge(['estado'=>1]);
        $request->merge(['nuevo'=>1]);
        $user = $this->userRepo->getModel();
