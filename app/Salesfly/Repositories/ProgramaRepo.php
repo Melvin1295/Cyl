@@ -20,5 +20,11 @@ class ProgramaRepo extends BaseRepo{
         $programa =Programa::get();
         return $programa;
     }
+    public function programapostulante($id_perfil)
+    {
+        $conocimiento =Programa::where('perfil_id', $id_perfil)
+                    ->get();
+        return $conocimiento;
+    }
     
 } 

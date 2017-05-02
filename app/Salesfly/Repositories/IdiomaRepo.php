@@ -20,5 +20,10 @@ class IdiomaRepo extends BaseRepo{
         $idioma =Idioma::get();
         return $idioma;
     }
-    
+    public function idiomaspostulante($id_perfil)
+    {
+        $idioma =Idioma::where('perfil_id', $id_perfil)
+                    ->get();
+        return $idioma;
+    }
 } 

@@ -34,4 +34,11 @@ class PostulanteRepo extends BaseRepo{
                     ->first();
         return $postulante;
     }
+    public function traerpostulante($id)
+    {
+        $postualante =Postulante::where('usuario_id',$id)
+                    ->orderby('id','desc')
+                    ->first();
+        return $postualante;
+    }
 } 

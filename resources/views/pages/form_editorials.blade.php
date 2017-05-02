@@ -206,7 +206,7 @@
                                 <label>Codigo Postal*:</label>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" placeholder="" name="codPostal" ng-model="postulante.codPostal" ng-required="false" >
+                                <input type="text" class="form-control" placeholder="" name="cod_postal" ng-model="postulante.cod_postal" ng-required="false" >
                             </div>
                         </div>
                         <br>
@@ -318,6 +318,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!--Empiesa Registro Experiencia -->
                             <content ng-show="mostraVentanaExperiencia">
                                 <!---Inicio Form Experiencia Create-->
@@ -439,6 +440,7 @@
         </div>
 
     </div>
+
     
 
 
@@ -460,7 +462,7 @@
                             </content>
                             <!--Fin Registro Experiencia -->
 
-                            <<div class="row justify-content-md-center">
+                            <div class="row justify-content-md-center">
                                 <div class="col col-lg-12" >
 
                                     <div class="panel panel-info" ng-repeat="expe in experiencias">
@@ -625,6 +627,7 @@
                                     </div>
                                 </div>
                             </div> 
+
                             <!-- Formacion -->
                             <div class="panel-footer" style="color:black;" >Formación</div>
                             <br>
@@ -651,7 +654,7 @@
         <label>Nivel de Estudios*:</label>
     </div>
     <div class="col col-lg-4">
-        <input type="text" class="form-control" placeholder="" ng-model="estudio.nivel_estudio" ng-required="false" >
+        <input type="text" class="form-control" placeholder="" ng-model="estudio.nivel_estudios" ng-required="false" >
     </div>
 </div>
 <br>
@@ -697,7 +700,7 @@
     <div class="col col-lg-2">
         <div class="form-group">
             <select ng-model="estudio.anio_ini" name="mes_ini" class="form-control">
-                <option value="">A単o Desde</option>
+                <option value="">Año Desde</option>
                 <option ng-repeat="i in anio" value="@{{i.anio}}">@{{i.anio}}</option>
             </select>
             </select>
@@ -715,7 +718,7 @@
     <div class="col col-lg-2">
         <div class="form-group">
             <select ng-model="estudio.anio_fin" name="mes_ini" class="form-control">
-                <option value="">A単o Hasta</option>
+                <option value="">Año Hasta</option>
                 <option ng-repeat="i in anio" value="@{{i.anio}}">@{{i.anio}}</option>
             </select>
             </select>
@@ -733,7 +736,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </content>
+                            </content> 
 
                             <div class="row justify-content-md-center">
                                 <div class="col col-lg-12" >
@@ -741,7 +744,7 @@
                                         <div class="panel-body">
                                             <div class="row justify-content-md-center">
                                                 <div class="col col-lg-7" >
-                                                    <div style="color:black;">@{{pan.nivel_estudio}}</div>
+                                                    <div style="color:black;">@{{pan.nivel_estudios}}</div>
                                                 </div>
                                                 <div class="col col-lg-5" style="text-align:right;"> 
                                                     <a ng-click="deleteEstudio($index)" href="#"><label class="glyphicon glyphicon-remove"></label></a>
@@ -774,7 +777,7 @@
         <label>Nivel de Estudios*:</label>
     </div>
     <div class="col col-lg-4">
-        <input type="text" class="form-control" placeholder="" ng-model="estudio.nivel_estudio" ng-required="false" >
+        <input type="text" class="form-control" placeholder="" ng-model="estudio.nivel_estudios" ng-required="false" >
     </div>
 </div>
 <br>
@@ -821,7 +824,7 @@
     <div class="col col-lg-2">
         <div class="form-group">
             <select ng-model="estudio.anio_ini" name="mes_ini" class="form-control">
-                <option value="">A単o Desde</option>
+                <option value="">Año Desde</option>
                 <option ng-repeat="i in anio" value="@{{i.anio}}">@{{i.anio}}</option>
                 
             </select>
@@ -841,7 +844,7 @@
     <div class="col col-lg-2">
         <div class="form-group">
             <select ng-model="estudio.anio_fin" name="mes_ini" class="form-control">
-                <option value="">A単o Hasta</option>
+                <option value="">Año Hasta</option>
                 <option ng-repeat="i in anio" value="@{{i.anio}}">@{{i.anio}}</option>               
             </select>
             </select>
@@ -864,7 +867,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
                             <div class="panel-footer" style="color:black;" >Idiomas</div>
                             <br>
                             <div class="row">
@@ -993,7 +996,8 @@
                             <div class="row">
                                 <div class="col-sm-12" style="text-align: center;">
                                     <a type="button" class="btn btn-default"  href="index.php" >Regresar</a>
-                                    <button type="button" class="btn btn-info" ng-click="uploadFile()" >Registrar</button>
+                                    <button ng-if="banderaRegistro" type="button" class="btn btn-info" ng-click="uploadFile()" >Registrar</button>
+                                    <button ng-if="!banderaRegistro" type="button" class="btn btn-info" ng-click="uploadEditFile()" >Actualizar</button>
                                     <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                 </div>
                             </div>

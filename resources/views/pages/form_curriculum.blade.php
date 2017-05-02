@@ -39,7 +39,7 @@
         <td width="80px;"><input type="checkbox" class="form-control" ></td>
         <td width="50%">@{{item.nombre}}</td>
         <td>@{{item.created_at}}</td>
-        <td width="40px;"><button class="btn btn-info">Eliminar</button></td>
+        <td width="40px;"><button class="btn btn-info" ng-click="destroyCurriculum(item)">Eliminar</button></td>
       </tr>      
     </tbody>
   </table>

@@ -20,5 +20,12 @@ class ConocimientoRepo extends BaseRepo{
         $conocimiento =Conocimiento::get();
         return $conocimiento;
     }
+    public function conocimientospostulante($id_perfil)
+    {
+        $conocimiento =Conocimiento::where('perfil_id', $id_perfil)
+                    ->get();
+        return $conocimiento;
+    }
+
     
 } 

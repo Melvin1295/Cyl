@@ -118,7 +118,7 @@
                    
                     <li><a href="/pages/blog" onclick="myFunction()">Mis Postulaciones</a></li>
                     <li><a href="/pages/indicadores" onclick="myFunction()">Buscar Avizos</a></li>
-                    <li><a href="/pages/editoriales" onclick="myFunction()">Mi Curriculum</a></li>    
+                    <li><a href="/pages/curriculum" onclick="myFunction()">Mi Curriculum</a></li>    
                    @endif              
                 </ul>
                 <div class="navbar-right hidden-xs">
@@ -255,6 +255,8 @@
     <script src="{{ asset('assets/js/creative-brands.js') }}"></script>
     <script src="{{ asset('assets/js/color-switcher.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+      <script src="/js/app/pages/app.js"></script>
+    <script src="/js/app/pages/controllers.js"></script>
 
     
  @section('js-customize')

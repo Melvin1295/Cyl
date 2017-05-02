@@ -53,7 +53,7 @@
                       <div class="col-md-6">
                           <div class="form-group">
                           <label>Contraseña:</label>
-                          <input type="password" class="form-control" name="cargo" placeholder="Password" ng-model="user.password" required>
+                          <input type="password" class="form-control" name="cargo" placeholder="Contraseña" ng-model="user.password" required>
                       </div>
                       </div>
                     </div>

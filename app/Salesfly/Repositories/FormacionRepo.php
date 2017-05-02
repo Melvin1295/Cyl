@@ -20,5 +20,11 @@ class FormacionRepo extends BaseRepo{
         $formacion =Formacion::get();
         return $formacion;
     }
+    public function formacionpostulante($id_perfil)
+    {
+        $formacion =Formacion::where('perfil_id', $id_perfil)
+                    ->get();
+        return $formacion;
+    }
     
 } 

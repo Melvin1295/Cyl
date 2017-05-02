@@ -1,9 +1,10 @@
-@extends('layout')
+@extends('layoutpage')
 @section('module')
-Menus
+Paginas
 @stop
 @section('base_url')
 <base href="{{URL::to('/')}}/menus"/>
+
 @stop
 @section('css-customize')
 @stop
@@ -11,13 +12,14 @@ Menus
 
 <section ng-app="menus">
     <div ng-view>
-
+       
     </div>
 </section>
 
 @section('js-customize')
-<script src="/js/app/menus/app.js"></script>
+    <script src="/js/app/menus/app.js"></script>
     <script src="/js/app/menus/controllers.js"></script>
+ 
 
 @stop
 

@@ -11,21 +11,21 @@ class CurriculumRepo extends BaseRepo{
 
     public function search($q)
     {
-        $anio =Curriculum::where('anio','like', $q.'%')
+        $curriculum =Curriculum::where('curriculum','like', $q.'%')
                     ->paginate(15);
-        return $anio;
+        return $curriculum;
     }
     public function anioAll()
     {
-        $anio =Curriculum::get();
-        return $anio;
+        $curriculum =Curriculum::get();
+        return $curriculum;
     }
 
     public function paginate2()
     {
-        $anio =Curriculum::where('id','=',  Auth()->user()->id)
+        $curriculum =Curriculum::where('usuario_id','=',  Auth()->user()->id)
            ->paginate(15);
-        return $anio;
+        return $curriculum;
     }
     
 } 

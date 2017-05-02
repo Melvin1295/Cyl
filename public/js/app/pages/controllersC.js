@@ -1,6 +1,6 @@
 (function(){
     angular.module('pages.controllers',[])
-        .controller('PageController',['$window','$scope', '$interval','$routeParams','$location','crudService' ,'$filter','$route','$log',
+        .controller('CurriculoController',['$window','$scope', '$interval','$routeParams','$location','crudService' ,'$filter','$route','$log',
             function($window,$scope,$interval, $routeParams,$location,crudService,$filter,$route,$log){
     $scope.mostraVentanaExperienciaEdit = false;
     $scope.estudioVentanaEdit = false;
@@ -30,95 +30,11 @@
     $scope.filtro={};
     $scope.profesiones=[];
     $scope.postulante={};
-    $scope.anuncios=[];
-    $scope.anuncio={};
-     $scope.postulaciones=[];
-    $scope.estadoPostulacion=10;
-    $scope.curriculum={};
-    $scope.curriculums=[];
-    $scope.user={};
-
-    var id = $routeParams.id;
-
-                if(id)
-                {
-                    crudService.byId(id,'anuncio').then(function (data){
-                        $scope.anuncio = data;
-                       
-                     });
-                }
-    if($location.path() == '/pages/blog') {
-         crudService.search('postulacion',$scope.estadoPostulacion,1).then(function (data){
-                        $scope.postulaciones = data.data;
-                       
-          });
-    }
-    if($location.path() == '/pages/curriculum') {
-        $scope.subirCurriculum=function(){
-                        var file_archivo = $scope.file_archivo;
-                        if (file_archivo!=undefined) {
-                            crudService.uploadFile('curriculum',file_archivo, name).then(function(data)
-                            {
-                                $scope.curriculum.nombre=data.data;
-                                crudService.create($scope.curriculum,'curriculum').then(function(data)
-                                {
-                                       alert("El archivo subio correctamente!!");
-                                       $('#exampleModalLong').modal('hide');
-                                       //$route.reload();
-                                       crudService.paginate('curriculums',1).then(function (data){
-                                            $scope.curriculums = data.data;
-                                            console.log('$scope.curriculums');
-                                            console.log($scope.curriculums);
-                                            console.log(data);
-                                           
-                                         });
-
-                                });
-                            });
-                        }else{
-                            alert("errore el archivo al cargar por favor intentelo nuevamente!!!");
-                        }
-        }
-         crudService.paginate('curriculums',1).then(function (data){
-                        $scope.curriculums = data.data;
-                        console.log('$scope.curriculums');
-                        console.log($scope.curriculums);
-                        console.log(data);
-                       
-          });
-         $scope.destroyCurriculum= function(row){
-            crudService.destroy(row,'curriculum').then(function(data)
-            {
-                if(data['estado'] == true){
-                    alert("Curriculum Eliminado Correctamente");
-                    //$route.reload();
-                    crudService.paginate('curriculums',1).then(function (data){
-                                            $scope.curriculums = data.data;
-                                            console.log('$scope.curriculums');
-                                            console.log($scope.curriculums);
-                                            console.log(data);
-                                           
-                                         });
-
-                }else{
-                    $scope.errors = data;
-                }
-            });
-        }
-    }
-    $scope.filtroPostulaciones=function(){
-         crudService.search('postulacion',$scope.estadoPostulacion,1).then(function (data){
-                        $scope.postulaciones = data.data;
-                       
-          });
-    }
 
     crudService.all('allProfesion').then(function (data){
                         $scope.profesiones = data;
                        
-     });
-
-    //alert('Hola');
+     });    
 
     crudService.all('allYears').then(function (data){
                         $scope.anio = data;
@@ -134,7 +50,7 @@
      });
      crudService.all('allDistrito').then(function (data){
                         $scope.distrito = data;
-     });
+     }); 
      crudService.all('allProvince').then(function (data){
                         $scope.provincia = data;
      });
@@ -144,31 +60,16 @@
      crudService.all('allSector').then(function (data){
                         $scope.sector = data;
      });
-      
+     
 
 
      crudService.ver('findPostulante',18).then(function (data){
                         $scope.postulante= data;
      });
 
-     
-     $scope.buscarAnuncios=function(){
-          crudService.searchAll($scope.filtros,'anuncio').then(function (data){
-                        $scope.anuncios = data.data;
-                     
-           });
-     }
-     $scope.buscarAnuncios();
-     $scope.postularme=function(){
-          crudService.create($scope.anuncio,'postulaciones').then(function (data){
-                      alert("creado Correctamente");
-                     
-           });
-     }
      $scope.palabraClave=function(palabra){
-        $scope.buscarAnuncios();
+         
            $scope.filtro.tipo=1;
-           $scope.filtro.id=0;
            $scope.filtro.value=palabra;
            $scope.filtro.index=0;
            $scope.filtros.push($scope.filtro);
@@ -187,10 +88,8 @@
                 $scope.profesiones[item.index].estado=1;
            }
      }
-     $scope.depratamentoFiltro=function(index,item){   
-           $scope.buscarAnuncios();      
+     $scope.depratamentoFiltro=function(index,item){         
            $scope.filtro.tipo=2;
-           $scope.filtro.id=item.id;
            $scope.filtro.value=item.nombre;
            $scope.filtro.index=index;
            $scope.filtros.push($scope.filtro);
@@ -199,9 +98,7 @@
            $scope.departamento.splice(index,1,item);
      }
      $scope.profesionFiltro=function(index,item){
-           $scope.buscarAnuncios();
            $scope.filtro.tipo=3;
-           $scope.filtro.id=item.id;
            $scope.filtro.value=item.nombre;
            $scope.filtro.index=index;
            $scope.filtros.push($scope.filtro);
@@ -313,6 +210,7 @@
     $scope.anuncio = {};
     
     $scope.agregarIdioma = function () {
+      alert("hola");
         if ($scope.idioma.idioma != undefined  && $scope.idioma.nivel_idioma != undefined) {
             $scope.idiomas.push($scope.idioma);
             $scope.idioma = {};
@@ -387,12 +285,7 @@
                         $scope.itemsperPage = 5;
                     });
                 }
-	            
-                $scope.editar=function(){
-                     $window.location.href='/pages/editoriales';
-                }
-                 //========
-                  $scope.registrarPostulante=function(){
+                $scope.registrarPostulante=function(){
                    $scope.allDatos = {
                         postulante: $scope.postulante,
                         perfil: $scope.perfil,
@@ -405,18 +298,14 @@
                     console.log($scope.allDatos);
                     crudService.create($scope.allDatos,'postulante').then(function (data){
                          if(data['estado'] ==true){
-                            alert("Registrado Correctamente");
-                            
-                            $window.location.href='/pages';
+                            alert("registrado Correctamente");
                          }
                       });
                 }
-
                 $scope.banderaRegistro = true;
 
                 crudService.all('traerpostulante').then(function (data){
                     $scope.postulante = data;
-                    console.log('$scope.postulante');
                     console.log($scope.postulante);
 
                     if ( $scope.postulante.flag_discapacidad === "1") {
@@ -429,7 +318,7 @@
                     }else{
                         $scope.postulante.flag_vehiculo_propio = false;
                     }
-                    if($scope.postulante.id!=undefined){
+                    if($scope.postulante!=undefined){
                         $scope.banderaRegistro = false;
                         crudService.ver('perfilpostulante',$scope.postulante.id).then(function (data){
                             $scope.perfil= data;
@@ -474,7 +363,7 @@
                                 $scope.updatePostulante();
                             });
                         }else{
-                            //$scope.postulante.link_foto="";
+                            $scope.postulante.link_foto="";
                             $scope.updatePostulante();
                         }
                    // }                       
@@ -520,21 +409,9 @@
                         });
                 };
 
-                  
-
 	            
-                $scope.registerUser=function(){
-                    console.log($scope.user);
-                    crudService.create($scope.user,'userPage').then(function (data){
-                         
-                            //alert("registrado Correctamente");
-                            $window.location.href='/auth/login';
-                         
-                      });
-                 }
-                $scope.registerUserCaselar=function(){
-                    $window.location.href='/auth/login';
-                }
+
+
 
 
 
