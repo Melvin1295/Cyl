@@ -95,17 +95,17 @@
   <header class="navbar navbar-default navbar-static-top" >
     	<div class="container">
             <div class="navbar-header">
-                <a href="/pages" onclick="myFunction()" class="navbar-brand"><img src="/images/logo.png" style="width:50px;" class="img-responsive" alt=""></a>
+                <a href="/pages" class="navbar-brand"><img src="/images/logo.png" style="width:50px;" class="img-responsive" alt=""></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
             </div>
             <div class="navbar-collapse collapse">
             	<ul class="nav navbar-nav">
                   @if($nuevo==2)
-                	<li class="active" ><a href="/pages" onclick="myFunction()">Mi Area</a></li>                  
+                	<li class="active" ><a href="/pages" >Mi Area</a></li>                  
                    
-                    <li><a href="/pages/blog" onclick="myFunction()">Mis Postulaciones</a></li>
-                    <li><a href="/pages/indicadores/0/x/x/-1" onclick="myFunction()">Buscar Avizos</a></li>
-                    <li><a href="/pages/curriculum" onclick="myFunction()">Mi Curriculum</a></li>    
+                    <li><a href="/pages/blog" >Mis Postulaciones</a></li>
+                    <li><a href="/pages/indicadores/0/x/x/-1">Buscar Avizos</a></li>
+                    <li><a href="/pages/curriculum" >Mi Curriculum</a></li>    
                    @endif              
                 </ul>
                 <div class="navbar-right hidden-xs">

@@ -60,10 +60,57 @@
           });
     }
     if($location.path() == '/pages/curriculum') {
+         $scope.subirCurriculum=function(){
+                        var file_archivo = $scope.file_archivo;
+                        if (file_archivo!=undefined) {
+                            crudService.uploadFile('curriculum',file_archivo, name).then(function(data)
+                            {
+                                $scope.curriculum.nombre=data.data;
+                                crudService.create($scope.curriculum,'curriculum').then(function(data)
+                                {
+                                       alert("El archivo subio correctamente!!");
+                                       $('#exampleModalLong').modal('hide');
+                                       //$route.reload();
+                                       crudService.paginate('curriculums',1).then(function (data){
+                                            $scope.curriculums = data;
+                                            console.log('$scope.curriculums');
+                                            console.log($scope.curriculums);
+                                            console.log(data);
+                                           
+                                         });
+
+                                });
+                            });
+                        }else{
+                            alert("errore el archivo al cargar por favor intentelo nuevamente!!!");
+                        }
+        }
          crudService.paginate('curriculums',1).then(function (data){
-                       $scope.curriculums=data;
+                        $scope.curriculums = data;
+                        console.log('$scope.curriculums');
+                        console.log($scope.curriculums);
+                        console.log(data);
                        
           });
+         $scope.destroyCurriculum= function(row){
+            crudService.destroy(row,'curriculum').then(function(data)
+            {
+                if(data['estado'] == true){
+                    alert("Curriculum Eliminado Correctamente");
+                    //$route.reload();
+                    crudService.paginate('curriculums',1).then(function (data){
+                                            $scope.curriculums = data;
+                                            console.log('$scope.curriculums');
+                                            console.log($scope.curriculums);
+                                            console.log(data);
+                                           
+                                         });
+
+                }else{
+                    $scope.errors = data;
+                }
+            });
+        }
     }
 
      
@@ -106,9 +153,9 @@
       
 
 
-     crudService.ver('findPostulante',18).then(function (data){
-                        $scope.postulante= data;
-     });
+     //crudService.ver('findPostulante',18).then(function (data){
+     //                   $scope.postulante= data;
+     //});
 
      $scope.subirCurriculum=function(){
                         var file_archivo = $scope.file_archivo;
@@ -118,7 +165,7 @@
                                 $scope.curriculum.nombre=data.data;
                                 crudService.create($scope.curriculum,'curriculum').then(function(data)
                                 {
-                                       alert("el archivo subio correctamente!!");
+                                       alert("El archivo subio correctamente!!");
                                        $window.location.reload();
                                 });
                             });
@@ -137,7 +184,7 @@
            });
      }
      $scope.pageChanged = function() { 
-     alert("hola");                  
+     //alert("hola");                  
                     crudService.searchAll($scope.filtros,'anuncio',$scope.currentPage).then(function (data){
                         $scope.anuncios = data.data;
                         $scope.maxSize = 15;
@@ -326,7 +373,7 @@
     $scope.anuncio = {};
     
     $scope.agregarIdioma = function () {
-      alert("hola");
+      //alert("hola");
         if ($scope.idioma.idioma != undefined  && $scope.idioma.nivel_idioma != undefined) {
             $scope.idiomas.push($scope.idioma);
             $scope.idioma = {};
@@ -401,7 +448,8 @@
                         $scope.itemsperPage = 5;
                     });
                 }
-                $scope.registrarPostulante=function(){
+                //========
+                  $scope.registrarPostulante=function(){ 
                    $scope.allDatos = {
                         postulante: $scope.postulante,
                         perfil: $scope.perfil,
@@ -411,19 +459,134 @@
                         programa: $scope.programas,
                         conocimiento: $scope.conocimientos
                     };
-                   // console.log($scope.allDatos);
+                    //console.log($scope.allDatos);
                     crudService.create($scope.allDatos,'postulante').then(function (data){
-                         
-                            alert("registrado Correctamente");
-                         
+                         if(data['estado'] ==true){
+                            alert("Registrado Correctamente");
+                            
+                            $window.location.href='/pages';
+                         }
                       });
                 }
+
+                $scope.banderaRegistro = true;
+
+                crudService.all('traerpostulante').then(function (data){
+                    $scope.postulante = data;
+                    //console.log('$scope.postulante');
+                    //console.log($scope.postulante);
+
+                    if ( $scope.postulante.flag_discapacidad === "1") {
+                        $scope.postulante.flag_discapacidad = true;
+                    }else{
+                        $scope.postulante.flag_discapacidad = false;
+                    }
+                    if ( $scope.postulante.flag_vehiculo_propio === "1") {
+                        $scope.postulante.flag_vehiculo_propio = true;
+                    }else{
+                        $scope.postulante.flag_vehiculo_propio = false;
+                    }
+                    if($scope.postulante.id!=undefined){
+                        $scope.banderaRegistro = false;
+                        crudService.ver('perfilpostulante',$scope.postulante.id).then(function (data){
+                            $scope.perfil= data;
+                            //console.log($scope.perfil)
+                            crudService.ver('experienciapostulante',$scope.perfil.id).then(function (data){
+                                $scope.experiencias = data;
+                                for (var i = 0; i < $scope.experiencias.length; i++) {
+                                    $scope.experiencias[i].opcion = 0;
+                                }
+                                
+                            });
+                            crudService.ver('formacionpostulante',$scope.perfil.id).then(function (data){
+                                $scope.estudios = data;
+                                for (var i = 0; i < $scope.estudios.length; i++) {
+                                    $scope.estudios[i].opcion = 0;
+                                }
+
+                            });
+                            crudService.ver('idiomaspostulante',$scope.perfil.id).then(function (data){
+                                $scope.idiomas = data;
+                            });
+                            crudService.ver('programapostulante',$scope.perfil.id).then(function (data){
+                                $scope.programas = data;
+                            });
+                            crudService.ver('conocimientospostulante',$scope.perfil.id).then(function (data){
+                                $scope.conocimientos = data;
+                            });
+                        });
+                    };
+
+                                         
+                });  
+                $scope.uploadEditFile = function()
+                { 
+
+                   // if ($scope.editorialCreateForm.$valid) {
+                       // $scope.bandera = true;
+                        var file_archivo = $scope.file_archivo;
+                        if (file_archivo!=undefined) {
+                            crudService.uploadFile('postulante',file_archivo, name).then(function(data)
+                            {
+                                $scope.postulante.link_foto=data.data;
+                                $scope.updatePostulante();
+                            });
+                        }else{
+                            $scope.postulante.link_foto=$scope.postulante.link_foto;
+                            $scope.updatePostulante();
+                        }
+                   // }                       
+                }
+
+                $scope.updatePostulante= function(){
+                    //$scope.allDatos = $scope.postulante;
+                    if ( $scope.postulante.flag_discapacidad) {
+                        $scope.postulante.flag_discapacidad = "1";
+                    }else{
+                        $scope.postulante.flag_discapacidad = "0";
+                    }
+                    if ( $scope.postulante.flag_vehiculo_propio) {
+                        $scope.postulante.flag_vehiculo_propio = "1";
+                    }else{
+                        $scope.postulante.flag_vehiculo_propio = "0"
+                    }
+                     $scope.postulante.perfil = $scope.perfil;
+                     $scope.postulante.experiencia =$scope.experiencias ;
+                     $scope.postulante.estudio = $scope.estudios;
+                     $scope.postulante.idioma = $scope.idiomas;
+                     $scope.postulante.programa=$scope.programas;
+                     $scope.postulante.conocimiento = $scope.conocimientos;
+                    /*$scope.allDatos = {
+                        postulante: $scope.postulante,
+                        perfil: $scope.perfil,
+                        experiencia: $scope.experiencias,
+                        estudio: $scope.estudios,
+                        idioma: $scope.idiomas,
+                        programa: $scope.programas,
+                        conocimiento: $scope.conocimientos
+                    };*/
+                    //console.log($scope.postulante);
+                        crudService.update($scope.postulante,'postulante').then(function(data)
+                        {
+                            if(data['estado'] == true){
+                                $scope.success = data['nombres'];
+                                alert('Editado correctamente');
+                               $location.path('/pages');
+                            }else{
+                                $scope.errors =data;
+                            }
+                        });
+                };
+                $scope.editar=function(){
+                     $window.location.href='/pages/editoriales';
+                }
+
 	            
                 $scope.registerUser=function(){
                     //console.log($scope.user);
                     crudService.create($scope.user,'userPage').then(function (data){
                          
-                            alert("registrado Correctamente");
+                            alert("Registrado Correctamente");
                             $window.location.href='/auth/login';
                          
                       });

@@ -472,8 +472,8 @@
                                                     <div  style="color:black;">@{{expe.cargo}}</div>
                                                 </div>
                                                 <div class="col col-lg-5" style="text-align:right;"> 
-                                                    <a ng-click="deleteExperiencia($index)"  href="#"><label class="glyphicon glyphicon-remove"></label></a>
-                                                    <a ng-click="editExperiencia($index)" href="#"style="margin-left:5px;"><label class="glyphicon glyphicon-pencil"></label></a>
+                                                    <a ng-click="deleteExperiencia($index)"  href="#"><label class="fa fa-close"></label></a>
+                                                    <a ng-click="editExperiencia($index)" href="#"style="margin-left:5px;"><label class="fa fa-edit"></label></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -747,8 +747,8 @@
                                                     <div style="color:black;">@{{pan.nivel_estudios}}</div>
                                                 </div>
                                                 <div class="col col-lg-5" style="text-align:right;"> 
-                                                    <a ng-click="deleteEstudio($index)" href="#"><label class="glyphicon glyphicon-remove"></label></a>
-                                                    <a ng-click="estudioVentanaEditf($index)" href="#" style="margin-left:5px;"><label class="glyphicon glyphicon-pencil"></label></a>
+                                                    <a ng-click="deleteEstudio($index)" href="#"><label class="fa fa-close"></label></a>
+                                                    <a ng-click="estudioVentanaEditf($index)" href="#" style="margin-left:5px;"><label class="fa fa-edit"></label></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -904,7 +904,7 @@
                                     <table class="table table-hover">
                                         <tr class="success" ng-repeat="i in idiomas">
                                             <td style="width:80%; margin-left:10px;">@{{i.idioma}}-@{{i.nivel_idioma}}</td>
-                                            <td style="width:20%; text-align:right;"><a ng-click="removeIdioma($index)"><label style="margin-right:15px;" class="glyphicon glyphicon-remove"></label></a>
+                                            <td style="width:20%; text-align:right;"><a ng-click="removeIdioma($index)"><label style="margin-right:15px;" class="fa fa-close"></label></a>
                                             </td>
                                         </tr>
                                     </table>
@@ -954,7 +954,7 @@
                                 </div>
                                 <div class="col-sm-9 form_inputs">
                                     <ul>
-                                        <li ng-repeat="item in programas">@{{item.nombre}}<a ng-click="quitarPrograma($index)" style="color:white;" class="glyphicon glyphicon-remove"></a></li>
+                                        <li ng-repeat="item in programas">@{{item.nombre}}<a ng-click="quitarPrograma($index)" style="color:white;" class="fa fa-close"></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -986,7 +986,7 @@
                                 </div>
                                 <div class="col-sm-9 form_inputs">
                                     <ul>
-                                        <li ng-repeat="row in conocimientos">@{{row.nombre}} <a ng-click="quitarConocimiento($index)" style="color:white;" class="glyphicon glyphicon-remove"></a></li>
+                                        <li ng-repeat="row in conocimientos">@{{row.nombre}} <a ng-click="quitarConocimiento($index)" style="color:white;" class="fa fa-close"></a></li>
                                 </div>
                             </div>
                             <br>
@@ -995,7 +995,7 @@
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-sm-12" style="text-align: center;">
-                                    <a type="button" class="btn btn-default"  href="index.php" >Regresar</a>
+                                    <a type="button" class="btn btn-default"  href="/pages" >Regresar</a>
                                     <button ng-if="banderaRegistro" type="button" class="btn btn-primary" ng-click="uploadFile()" >Registrar</button>
                                     <button ng-if="!banderaRegistro" type="button" class="btn btn-primary" ng-click="uploadEditFile()" >Actualizar</button>
                                     <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />

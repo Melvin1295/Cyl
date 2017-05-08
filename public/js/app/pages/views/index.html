@@ -28,8 +28,8 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="w3ls-agile-left-info">
-                                            <h6>{{postulante.apellidos_nombres}}</h6>
-                                            <p>{{postulante.cargo}} </p> 
+                                            <h6>{{postulante.apellido_paterno +' '+postulante.apellido_materno+' '+postulante.nombres}}</h6>
+                                            <p>{{perfil.cargo}} </p> 
                                         </div>
                                         <div class="w3ls-agile-left-info">                      
                                             <p><a href="" ng-click="editar()">Mejorar Perfil</a></p>
