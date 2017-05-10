@@ -105,7 +105,7 @@
                 	<li class="active" ><a href="/pages" >Mi Area</a></li>                  
                    
                     <li><a href="/pages/blog" >Mis Postulaciones</a></li>
-                    <li><a href="/pages/indicadores/0/x/x/-1">Buscar Avizos</a></li>
+                    <li><a href="/pages/indicadores/0/x/x/-1">Buscar Avisos</a></li>
                     <li><a href="/pages/curriculum" >Mi Curriculum</a></li>    
                    @endif              
                 </ul>
@@ -147,7 +147,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
-                  <li class="user-header" style="  text-align: center;">
+                  <li class="user-header" style=" margin:5px; text-align: center;">
                     <img src="{{Auth()->user()->image}}" style="  width: 70px;" class="img-circle" alt="User Image" />
                     <p>
                     @if(!empty(Auth()->user()))
@@ -173,11 +173,11 @@
                     </div>
                   </li>-->
                   <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left" style="    margin-bottom: 10px;">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <li class="user-footer" >
+                    <div class="pull-left" style=" margin-left:15px;   margin-bottom: 10px;">
+                      <a href="#" class="btn btn-default btn-flat">Perfil</a>
                     </div>
-                    <div class="pull-right" style="    margin-left: 85px;  margin-bottom: 10px;">
+                    <div class="pull-right" style="    margin-left: 85px; mrgin-right:15px; margin-bottom: 10px;">
                       <a  onclick="logaout()" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
@@ -213,7 +213,7 @@
                     
             </body>
           @endif
-          
+
   </div>
   
 </body>
