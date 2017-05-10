@@ -599,8 +599,13 @@
                 }
                 $scope.buscarAnunciosDesdePrincipal=function ()
                   {
-                    var array = $scope.regionSelected.split('/');
-                     $window.location.href='pages/indicadores/'+array[1]+"/"+array[0]+"/"+$scope.palabraBuscada+"/"+array[2];
+                                if($scope.palabraBuscada.length > 0 && $scope.regionSelected != ""){
+                                     var array = $scope.regionSelected.split('/');
+                                     $window.location.href='pages/indicadores/'+array[1]+"/"+array[0]+"/"+$scope.palabraBuscada+"/"+array[2];
+                          
+                                 }else{
+                                    alert("debe ingresar una palabra clave y una region de busqueda.");
+                                 }
                   }
 
 
