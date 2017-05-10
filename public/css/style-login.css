@@ -1,0 +1,70 @@
+*{
+margin: 0;
+padding: 0;
+}
+
+body{
+font-size: 16px;
+background-color: #C6C6C6;
+}
+
+a{
+text-decoration:none;
+}
+
+/* Login de CRM */
+.bodLogin{
+color: #555555;
+background-color: #E6F0F8;
+margin-top: 10%;
+padding: 40px;
+border: 0.2px solid #CFD8DC;
+}
+
+.bodRegister{
+color: white;
+background-color: #20A8D8;
+margin-top: 10%;
+padding: 40px;
+border: 1px solid #CFD8DC;
+}
+
+.bodRegister .titRegister{
+font-size: 30px;
+font-weight: bold;
+letter-spacing: 1px;
+text-align: center;
+}
+
+.loginCab{
+padding-top: 15px; 
+text-align: center;
+}
+
+.subEmpresa{
+font-size: 12px; 
+padding-left: 10px;
+}
+
+.bodLogin .titLogin{
+font-size: 36px;
+font-weight: bold;
+letter-spacing: 1px;
+color: #263238;
+}
+
+.bodLogin .subtitLogin{
+font-size: 14px;
+color: #B0C0C8;
+}
+
+.imgLogin{
+text-align: center;
+}
+
+.alignRigth{
+text-align: right;
+}
+.alignCenter{
+text-align: center;
+}

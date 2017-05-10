@@ -14,6 +14,8 @@
     <!-- iCheck -->
     <link href="/vendor/adminlte/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
     <link href="/css/styleFondo.css" rel="stylesheet" type="text/css" />
+
+    <link href="/css/style-login.css" rel="stylesheet" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,31 +24,53 @@
     <![endif]-->
   </head>
   <body class="login-page fondo">
-    <div class="login-box ">
-      <div class="login-logo">
-        <a href="../../index2.html"><b class="primername">CY</b><b class="segunname">L</b></a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body cuadro">
-        <p class="login-box-msg primername">Escibre tus credenciales para iniciar sesión</p>
+    <div class="">
+      
+     
+        
+
+
+        <form action="/auth/login" method="post">
+        {!! csrf_field() !!}
+          
+
+
+          <body>
+<div class="col-md-4 col-md-offset-4">
+   <div class="col-md-12 bodLogin">
+
         @if($errors->has())
-         <div class="callout callout-warning">
+         <div class="callout callout-danger">
             @foreach($errors->all() as $error)
                  <p> {{$error}}</p>
             @endforeach
             </div>
          @endif
-
-
-        <form action="/auth/login" method="post">
-        {!! csrf_field() !!}
-          <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email" name="email" value="{{old('email')}}"/>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password" name="password"/>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-          </div>
+       <div class="col-md-6 loginCab">
+           <p class="titLogin">Login<sub class="subEmpresa">Postulante</sub></p>
+       </div>
+       <div class="col-md-6 imgLogin">
+           <img src="/images/logo.png" width="80" />
+       </div>
+       <br />
+       <p class="subtitLogin">Iniciar sesión en su cuenta</p>
+       <br />
+       
+           <p class="subTitLogin">
+             
+           </p>
+           <div class="input-group">
+               <span class="input-group-addon transparent"><span class="glyphicon glyphicon-user"></span></span>
+               <input type="email"  class="form-control left-border-none" placeholder="Email" name="email" value="{{old('email')}}" required />
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+           </div><br>
+           <div class="input-group">
+               <span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock"></span></span>
+               <input type="password" placeholder="Password" name="password" class="form-control left-border-none"  required />
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+           </div>
+           <!-- Input oculto para identificar el formulario -->
+           <br>
           <div class="row">
             <div class="col-xs-8">
               <div class="checkbox icheck">
@@ -58,7 +82,8 @@
             <div class="col-xs-4">
               <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
             </div><!-- /.col -->
-          </div>
+          </div>  
+  </body>
         </form>
 
         <!--<div class="social-auth-links text-center">
@@ -88,5 +113,10 @@
         });
       });
     </script>
-  </body>
+
+
+
+
+   
+
 </html>

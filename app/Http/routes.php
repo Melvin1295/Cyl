@@ -240,6 +240,9 @@ Route::get('api/allProfesion/registro','PageController@allProfesion');
 Route::post('api/postulaciones/create',['as'=>'person_create', 'uses'=>'PageController@create']);
 Route::get('api/curriculums/paginate','PageController@curriculums');
 
+Route::get('pages/form-comparativa',['as'=>'person','uses'=>'PageController@form_comparativa']);
+Route::get('pages/comparativa/{id?}',['as'=>'person','uses'=>'PageController@index']);
+
 Route::get('pages/form-verAnuncio',['as'=>'person','uses'=>'PageController@form_verAnuncio']);
 Route::get('pages/verAnuncio/{id?}',['as'=>'person','uses'=>'PageController@index']);
 

@@ -195,6 +195,9 @@
                      });
                 };
      //$scope.buscarAnuncios();
+     $scope.iraComprativa=function(){
+        $window.location.href='/pages/comparativa/1';
+     }
      $scope.postularme=function(){
           crudService.create($scope.anuncio,'postulaciones').then(function (data){
                       alert("Te as postulado Correctamente");

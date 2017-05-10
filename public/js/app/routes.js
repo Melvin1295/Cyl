@@ -28,6 +28,10 @@
                     templateUrl: '/pages/form-verEditorial',
                     controller: 'PageController'
                 })
+             .when('/pages/comparativa/:id', {
+                    templateUrl: '/pages/form-comparativa',
+                    controller: 'PageController'
+                })
               .when('/pages/verAnuncio/:id', {
                     templateUrl: '/pages/form-verAnuncio',
                     controller: 'PageController'
