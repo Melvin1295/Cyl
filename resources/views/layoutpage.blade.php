@@ -56,7 +56,8 @@
      <link href="{{ asset('assets/css/color-switcher.css') }}" rel="stylesheet">
      <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
      <link href="{{ asset('assets/css/color/red.css') }}" rel="stylesheet">
-
+    
+    <script src="/js/canvasjs.min.js"></script>
 
 @section('base_url')
 @show
@@ -126,6 +127,7 @@
   margin-right: 10px;
   margin-top: 4px;
                  }
+
                 </style>
 
               <!-- User Account: style can be found in dropdown.less -->
@@ -211,10 +213,12 @@
                     
             </body>
           @endif
+          
   </div>
   
 </body>
   <script src="{{ asset('/vendor/angular/angular.js') }}"></script>
+
   <script src="/vendor/moment/moment.js"></script>
   <script src="/vendor/angular-route/angular-route.js"></script>
   <script src="/vendor/angular-sanitize/angular-sanitize.js"></script>

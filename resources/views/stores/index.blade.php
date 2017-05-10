@@ -18,12 +18,13 @@ Clientes
 <!-- Main content -->
 <section ng-app="stores">
     <div ng-view>
-
+            
     </div>
 </section>
 
 @section('js-customize')
-
+    
+    <script src="/js/canvasjs.min.js"></script>
 @stop
 
 @stop

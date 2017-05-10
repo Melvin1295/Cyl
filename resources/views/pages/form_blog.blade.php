@@ -140,7 +140,7 @@
                                     
                                 </div>
                                 <div class="col-lg-2" style="text-align: right;">
-                                    <button class="btn btn-primary"><small>26 Postulantes</small><br><b>Ver Comprativa</b></button>
+                                    <button class="btn btn-primary" ng-click="iraComprativa()"><small>26 Postulantes</small><br><b>Ver Comprativa</b></button>
                                 </div>
                             </div><hr style="margin-bottom: -20px; ">
                         </div>

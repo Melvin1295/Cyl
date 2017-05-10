@@ -198,6 +198,9 @@ class PageController extends Controller {
     public function form_verAnuncio(){
         return View('pages.form_verAnuncio');
    }
+   public function form_comparativa(){
+        return View('pages.form_comparativa');
+   }
 
    public function form_curriculum(){
        return View('pages.form_curriculum');
